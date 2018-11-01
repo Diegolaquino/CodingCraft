@@ -97,24 +97,28 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Cliente cliente = await db.Clientes.FindAsync(id);
             if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
-        }
 
-        // POST: Clientes/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Cliente cliente = await db.Clientes.FindAsync(id);
             db.Clientes.Remove(cliente);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        // POST: Clientes/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Cliente cliente = await db.Clientes.FindAsync(id);
+        //    db.Clientes.Remove(cliente);
+        //    await db.SaveChangesAsync();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
