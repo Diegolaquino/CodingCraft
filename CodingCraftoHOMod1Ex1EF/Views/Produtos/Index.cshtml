@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Produto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produtos";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Produto", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,8 @@
             @Html.DisplayFor(modelItem => item.Cardinalidade)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProdutoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ProdutoId })
         </td>
     </tr>
 }
