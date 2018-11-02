@@ -104,17 +104,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 return HttpNotFound();
             }
-            return View(categoria);
-        }
 
-        // POST: Categorias/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Categoria categoria = await db.Categorias.FindAsync(id);
             db.Categorias.Remove(categoria);
             await db.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 

@@ -20,6 +20,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         [Required]
         [StringLength(100)]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }
