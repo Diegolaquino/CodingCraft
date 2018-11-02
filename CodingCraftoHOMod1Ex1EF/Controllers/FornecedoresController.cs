@@ -11,10 +11,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Fornecedores
-        public async Task<ActionResult> Index()
-        {
-            return View(await db.Fornecedores.ToListAsync());
-        }
+        public async Task<ActionResult> Index() => View(await db.Fornecedores.ToListAsync());
 
         // GET: Fornecedores/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -32,10 +29,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         }
 
         // GET: Fornecedores/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        public ActionResult Create() => View();
 
         // POST: Fornecedores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -97,15 +91,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 return HttpNotFound();
             }
-            return View(fornecedor);
-        }
 
-        // POST: Fornecedores/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Fornecedor fornecedor = await db.Fornecedores.FindAsync(id);
             db.Fornecedores.Remove(fornecedor);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

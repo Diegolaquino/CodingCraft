@@ -333,7 +333,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Fornecedores\Create.cshtml" />
-    <Content Include="Views\Fornecedores\Delete.cshtml" />
     <Content Include="Views\Fornecedores\Edit.cshtml" />
     <Content Include="Views\Fornecedores\Index.cshtml" />
     <Content Include="Views\Produtos\Create.cshtml" />
