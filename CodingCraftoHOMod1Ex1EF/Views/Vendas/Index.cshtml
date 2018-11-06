@@ -43,9 +43,18 @@
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.VendaId }) |
             @Html.ActionLink("Details", "Details", new { id=item.VendaId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.VendaId })
+            @Html.ActionLink("Excluir", "DeleteConfirmed", new { id=item.VendaId })
         </td>
     </tr>
 }
 
 </table>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    function Deleta(VendaId) {
+        var url = "@Url.Action("Delete", "Venda")
+
+        $.get(url, id : VendaId);
+    }
+</script>

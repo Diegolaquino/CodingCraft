@@ -15,13 +15,15 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Display(Name = "Cliente")]
         public int QuantidadeProdutos { get; set; }
 
+        [Display(Name = "Data da Venda")]
         public DateTime DataDaVenda { get; set; }
 
+        [Display(Name = "Valor Total")]
         public float ValorVenda { get; set; }
 
-        [Display(Name = "Cliente")]
         public int ClientId { get; set; }
 
+        [Display(Name = "Cliente")]
         public virtual Cliente cliente { get; set; }
         public virtual ICollection<Produto> Produtos { get; set; }
     }
