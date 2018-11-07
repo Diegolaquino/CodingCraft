@@ -27,7 +27,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="linha@(item.VendaId)">
         <td>
             @Html.DisplayFor(modelItem => item.cliente.Nome)
         </td>
@@ -41,20 +41,26 @@
             @Html.DisplayFor(modelItem => item.ValorVenda)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.VendaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VendaId }) |
-            @Html.ActionLink("Excluir", "DeleteConfirmed", new { id=item.VendaId })
+            @Html.ActionLink("Editar", "Edit", new { id = item.VendaId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.VendaId }) |
+            @Html.ActionLink("Excluir", "DeleteConfirmed", new { id = item.VendaId })
+            @*@Html.ActionLink("Excluir", "DeleteConfirmed", "Vendas", new { id = item.VendaId }, null, "")*@
+            @*<a href="#" onclick="Deleta(@item.VendaId)">Excluir</a>*@
         </td>
     </tr>
 }
 
 </table>
 
-<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     function Deleta(VendaId) {
-        var url = "@Url.Action("Delete", "Venda")
+        var url = @Url.Action("Delete", "Venda")
 
-        $.get(url, id : VendaId);
+        $.get(url, { id: VendaId }, atualiza);
     }
-</script>
+
+    function atualiza(resposta)
+        $("#linha" + resposta.VendaId).removeData(tr);
+    }
+</script>*@

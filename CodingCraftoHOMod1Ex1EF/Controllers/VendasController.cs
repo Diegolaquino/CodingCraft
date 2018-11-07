@@ -109,19 +109,20 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 return HttpNotFound();
             }
-            return View(venda);
+
+            db.Vendas.Remove(venda);
+            await db.SaveChangesAsync();
+            return Json("Index");
         }
 
         // POST: Vendas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Venda venda = await db.Vendas.FindAsync(id);
-            db.Vendas.Remove(venda);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Venda venda = await db.Vendas.FindAsync(id);
+           
+        //}
 
         protected override void Dispose(bool disposing)
         {
