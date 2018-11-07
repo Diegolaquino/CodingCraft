@@ -10,6 +10,8 @@ namespace CodingCraftoHOMod1Ex1EF.Models
     {
         [Key]
         public int ProdutoId { get; set; }
+
+        [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
 
         [Required]

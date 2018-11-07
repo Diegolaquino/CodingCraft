@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Venda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Venda", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeProdutos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDaVenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorVenda)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="linha@(item.VendaId)">
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeProdutos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDaVenda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorVenda)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.VendaId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.VendaId }) |
+            @Html.ActionLink("Excluir", "DeleteConfirmed", new { id = item.VendaId })
+            @*@Html.ActionLink("Excluir", "DeleteConfirmed", "Vendas", new { id = item.VendaId }, null, "")*@
+            @*<a href="#" onclick="Deleta(@item.VendaId)">Excluir</a>*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    function Deleta(VendaId) {
+        var url = @Url.Action("Delete", "Venda")
+
+        $.get(url, { id: VendaId }, atualiza);
+    }
+
+    function atualiza(resposta)
+        $("#linha" + resposta.VendaId).removeData(tr);
+    }
+</script>*@

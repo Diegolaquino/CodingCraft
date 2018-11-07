@@ -8,6 +8,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
     public class Categoria
     {
         [Key]
+        [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
 
         [Required]
