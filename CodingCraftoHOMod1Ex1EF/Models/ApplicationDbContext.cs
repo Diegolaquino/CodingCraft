@@ -17,7 +17,6 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<Venda> Vendas { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
 
         public System.Data.Entity.DbSet<CodingCraftoHOMod1Ex1EF.Models.Categoria> Categorias { get; set; }

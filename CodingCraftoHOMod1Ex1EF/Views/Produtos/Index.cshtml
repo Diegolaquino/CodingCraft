@@ -41,8 +41,10 @@
             @Html.DisplayFor(modelItem => item.Cardinalidade)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.ProdutoId })
+            <a href="@Url.Action("Buy", "Cart", new { id = item.ProdutoId })">Buy Now</a>
+            @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoId })
+
+           
         </td>
     </tr>
 }
