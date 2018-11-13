@@ -7,16 +7,8 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 {
     public class Item
     {
-        public Produto Produto
-        {
-            get;
-            set;
-        }
+        public Produto Produto { get; set; }
 
-        public int Quantidade
-        {
-            get;
-            set;
-        }
+        public int Quantidade { get; set; }
     }
 }
