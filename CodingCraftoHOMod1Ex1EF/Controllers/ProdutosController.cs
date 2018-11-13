@@ -54,6 +54,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
+        public ActionResult Carrinho() => View();
+
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)
         {
