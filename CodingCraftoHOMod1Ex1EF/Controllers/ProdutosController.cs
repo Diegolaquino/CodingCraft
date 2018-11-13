@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -16,6 +18,43 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             var produtoes = db.Produtos.Include(p => p.Categoria);
             return View(await produtoes.ToListAsync());
         }
+
+        public async Task<ActionResult> Comprar(int id)
+        {
+            if(Session["carrinho"] == null)
+            {
+                List<Item> carrinho = new List<Item>();
+                Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                carrinho.Add(produto);
+                Session["carrinho"] = carrinho;
+            }
+            else
+            {
+                int quantidade = 0;
+                List<Item> carrinho = (List<Item>)Session["carrinho"];
+
+                var retorno = carrinho.Find(c => c.Produto.ProdutoId == id);
+
+                if(retorno != null)
+                {
+                    quantidade = retorno.Quantidade;
+                    carrinho.Remove(retorno);
+                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = quantidade + 1 };
+                    carrinho.Add(produto);
+                }
+                else
+                {
+                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                    carrinho.Add(produto);
+                }
+                
+                Session["carrinho"] = carrinho;
+            }
+
+            return View("Carrinho");
+        }
+
+        public ActionResult Carrinho() => View();
 
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)

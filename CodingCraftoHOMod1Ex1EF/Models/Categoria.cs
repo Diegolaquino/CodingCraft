@@ -14,6 +14,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Required]
         [StringLength(100)]
         [Index("IUQ_Categorias_Nome", IsUnique = true)]
+        [Display(Name = "Nome da Categoria")]
         public String Nome { get; set; }
 
         public virtual ICollection<Produto> Produtos { get; set; }

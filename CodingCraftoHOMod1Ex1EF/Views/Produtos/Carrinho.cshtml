@@ -1,0 +1,65 @@
+﻿@using CodingCraftoHOMod1Ex1EF.Models
+
+<table class="table">
+    <tr>
+        <th>
+            Categoria
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Preço
+        </th>
+        <th>
+            Quantidade
+        </th>
+        <th></th>
+    </tr>
+    @if (Session["carrinho"] != null)
+    {
+
+
+        foreach (Item item in (List<Item>)Session["carrinho"])
+        {
+            <tr>
+                <td>
+                    @item.Produto.CategoriaId
+                </td>
+                <td>
+                    @item.Produto.Nome
+                </td>
+                <td>
+                    @item.Produto.Preco
+                </td>
+                <td>
+                    @item.Quantidade
+                </td>
+                <td>
+                    @Html.ActionLink("Remover", "Remover", new { id = item.Produto.ProdutoId }) |
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>Total</td>
+            <td>
+                @{ List<Item> carrinho = (List<Item>)Session["carrinho"];
+                    var total = carrinho.Sum(item => item.Produto.Preco * item.Quantidade);
+                }
+                @total
+            </td>
+        </tr>
+}
+else
+{
+    <tr class="alert-info">
+        <td><h1>Não há itens no carrinho!!!</h1></td>
+    </tr>
+}
+
+
+
+    <div>
+        @Html.ActionLink("Continuar Comprando", "Index")
+    </div>
+</table>
