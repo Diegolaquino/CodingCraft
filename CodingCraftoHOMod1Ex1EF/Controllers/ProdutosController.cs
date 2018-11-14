@@ -19,6 +19,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View(await produtoes.ToListAsync());
         }
 
+        public ActionResult Carrinho() => View();
+
         public async Task<ActionResult> Comprar(int id)
         {
             if(Session["carrinho"] == null)
@@ -54,7 +56,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public ActionResult Carrinho() => View();
+        public async Task<ActionResult> ComprarParaEstoque()
+        {
+            List<Estoque> produtos = new List<Estoque>();
+        }
 
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)
