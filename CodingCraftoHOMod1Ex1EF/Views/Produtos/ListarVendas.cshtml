@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Venda>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDaVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeDeItens)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteId)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDaVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeDeItens)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.VendaId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.VendaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.VendaId })
+            </td>
+        </tr>
+    }
+    
+    </table>

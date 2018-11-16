@@ -1,5 +1,14 @@
 ﻿@using CodingCraftoHOMod1Ex1EF.Models
-
+<style>
+    .minhaClass{
+        text-decoration: none;
+        color:azure;
+    }
+    .minhaClass:hover{
+        text-decoration: none;
+        color:whitesmoke;
+    }
+</style>
 <table class="table">
     <tr>
         <th>
@@ -35,8 +44,8 @@
                 <td>
                     @item.Quantidade
                 </td>
-                <td>
-                    @Html.ActionLink("Remover", "Remover", new { id = item.Produto.ProdutoId }) |
+                <td class="btn btn-danger">
+                    @Html.ActionLink("X Remover", "Remover", new { id = item.Produto.ProdutoId }, new { @class = "minhaClass"})
                 </td>
             </tr>
         }
@@ -49,6 +58,10 @@
                 @total
             </td>
         </tr>
+        <tr>
+            <td class="btn btn-primary ">@Html.ActionLink("Finalizar Pedido", "FinalizarPedido", new { total }, new { @class = "minhaClass" })</td>
+            <td class="btn btn-danger ">@Html.ActionLink("Cancelar Pedido", "CancelarPedido", null,  new { @class = "minhaClass" })</td>
+        </tr>
 }
 else
 {
@@ -58,8 +71,24 @@ else
 }
 
 
-
-    <div>
-        @Html.ActionLink("Continuar Comprando", "Index")
-    </div>
 </table>
+
+<div>
+    @Html.ActionLink("Continuar Comprando", "Index")
+</div>
+
+@*<script src="~/Scripts/jquery-3.3.1.js">
+    function CancelarPedido() {
+        $.ajax({
+            url: "/Produtos/CancelarPedido",
+            data: {""},
+            type: 'GET',
+            success: function (result) {
+                alert("Sucesso");
+            },
+            error: function (result) {
+                alert("Ruim");
+            }
+        });
+    }
+</script>*@

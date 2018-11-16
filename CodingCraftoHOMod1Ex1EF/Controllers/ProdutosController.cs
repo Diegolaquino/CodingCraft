@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -56,10 +57,36 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public async Task<ActionResult> ComprarParaEstoque()
+        public async Task<ActionResult> FinalizarPedido(decimal total)
         {
-            List<Estoque> produtos = new List<Estoque>();
+            List<Item> lista = (List<Item>)Session["carrinho"];
+            Venda minhaVenda = new Venda();
+            minhaVenda.DataDaVenda = DateTime.Now;
+            minhaVenda.Cliente = await db.Clientes.FindAsync(1);
+            minhaVenda.Itens = lista;
+            minhaVenda.QuantidadeDeItens = lista.Sum(c => c.Quantidade);
+            minhaVenda.Total = total;
+
+            db.Vendas.Add(minhaVenda);
+
+            return RedirectToAction("ListarVendas");
         }
+
+        [HttpGet]
+        public ActionResult CancelarPedido()
+        {
+            Session["carrinho"] = null;
+            return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> ListarVendas() => View(await db.Vendas.ToListAsync());
+   
+        //public async Task<ActionResult> ComprarParaEstoque()
+        //{
+        //    List<Estoque> produtos = new List<Estoque>();
+        //    Estoque p = new Estoque();
+        //    produtos = db.Estoques.Add(p);
+        //}
 
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)
