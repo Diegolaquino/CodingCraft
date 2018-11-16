@@ -57,20 +57,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public async Task<ActionResult> FinalizarPedido(decimal total)
-        {
-            List<Item> lista = (List<Item>)Session["carrinho"];
-            Venda minhaVenda = new Venda();
-            minhaVenda.DataDaVenda = DateTime.Now;
-            minhaVenda.Cliente = await db.Clientes.FindAsync(1);
-            minhaVenda.Itens = lista;
-            minhaVenda.QuantidadeDeItens = lista.Sum(c => c.Quantidade);
-            minhaVenda.Total = total;
-
-            db.Vendas.Add(minhaVenda);
-
-            return RedirectToAction("ListarVendas");
-        }
+        //public async Task<ActionResult> FinalizarPedido(decimal total)
+        //{
+            
+        //}
 
         [HttpGet]
         public ActionResult CancelarPedido()
@@ -78,8 +68,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             Session["carrinho"] = null;
             return RedirectToAction("Index");
         }
-
-        public async Task<ActionResult> ListarVendas() => View(await db.Vendas.ToListAsync());
    
         //public async Task<ActionResult> ComprarParaEstoque()
         //{
