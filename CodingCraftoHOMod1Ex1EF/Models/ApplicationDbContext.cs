@@ -22,5 +22,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<FornecedorProduto> FornecedoresProdutos { get; set; }
         public DbSet<Compra> Compras { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<Item> Itens { get; set; }
     }
 }

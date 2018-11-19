@@ -15,5 +15,9 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public Produto Produto { get; set; }
 
         public int Quantidade { get; set; }
+
+        public Venda Venda { get; set; }
+
+        public int VendaId { get; set; }
     }
 }

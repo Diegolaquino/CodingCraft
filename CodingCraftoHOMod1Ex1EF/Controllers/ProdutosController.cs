@@ -57,10 +57,24 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        //public async Task<ActionResult> FinalizarPedido(decimal total)
-        //{
-            
-        //}
+        public ActionResult RemoverItem(int? id)
+        {
+            if(id == null)
+            {
+                return HttpNotFound();
+            }
+
+            List<Item> carrinho = (List<Item>)Session["carrinho"];
+            var itemQueSeraExcluido = carrinho.Find(c => c.ItemId == id);
+
+            carrinho.Remove(itemQueSeraExcluido);
+
+            Session["carrinho"] = carrinho;
+
+            return RedirectToAction("Carrinho");
+        }
+
+        public ActionResult ListarVendas() => View();
 
         [HttpGet]
         public ActionResult CancelarPedido()
