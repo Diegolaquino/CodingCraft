@@ -19,10 +19,17 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public int FornecedorId { get; set; }
 
+        public int CartegoriaId { get; set; }
+
+        public int ProdutoId { get; set; }
+
+        public int Quantidade { get; set; }
+
         public virtual Fornecedor Fornecedor { get; set; } 
         
-        public virtual ICollection<Produto> produtos { get; set; }
-        public virtual ICollection<Categoria> categorias { get; set; }
+        public virtual Produto Produto { get; set; }
+
+        public virtual Categoria Categoria { get; set; }
 
     }
 }

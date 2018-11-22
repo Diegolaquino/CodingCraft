@@ -42,6 +42,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             ViewBag.FornecedorId = new SelectList(db.Fornecedores, "FornecedorId", "Nome");
             ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome");
+            ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome");
 
             return View();
         }
