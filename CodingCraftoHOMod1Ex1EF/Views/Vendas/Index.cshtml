@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Venda>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Cadastrar Venda", "Create")
     </p>
     <table class="table">
         <tr>
@@ -23,9 +23,9 @@
                 @Html.DisplayFor(modelItem => item.ValorDaVenda)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.VendaId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.VendaId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.VendaId })
+                @Html.ActionLink("Editar", "Edit", new { id=item.VendaId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.VendaId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.VendaId })
             </td>
         </tr>
     }
