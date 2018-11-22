@@ -1,0 +1,28 @@
+﻿@model CodingCraftoHOMod1Ex1EF.Models.Compra
+
+    <div>
+        <h4>Compra</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fornecedor.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.CompraId }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>

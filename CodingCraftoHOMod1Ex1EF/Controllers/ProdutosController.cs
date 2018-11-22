@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -19,33 +20,36 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View(await produtoes.ToListAsync());
         }
 
+        public ActionResult Carrinho() => View();
+
         public async Task<ActionResult> Comprar(int id)
         {
             if(Session["carrinho"] == null)
             {
                 List<Item> carrinho = new List<Item>();
-                Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                var produtoQueSeraComprado = await db.Produtos.FindAsync(id);
+                Item produto = new Item { NomeItem = produtoQueSeraComprado.Nome, Quantidade = 1, CodigoProduto = produtoQueSeraComprado.ProdutoId, PrecoUnitario = produtoQueSeraComprado.Preco };
                 carrinho.Add(produto);
                 Session["carrinho"] = carrinho;
             }
             else
             {
-                int quantidade = 0;
                 List<Item> carrinho = (List<Item>)Session["carrinho"];
 
-                var retorno = carrinho.Find(c => c.Produto.ProdutoId == id);
+                var retorno = carrinho.Find(c => c.CodigoProduto == id);
 
                 if(retorno != null)
                 {
-                    quantidade = retorno.Quantidade;
                     carrinho.Remove(retorno);
-                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = quantidade + 1 };
+                    Item produto = new Item { NomeItem = retorno.NomeItem, Quantidade = ++retorno.Quantidade, CodigoProduto = retorno.CodigoProduto, PrecoUnitario = retorno.PrecoUnitario };
                     carrinho.Add(produto);
                 }
                 else
                 {
-                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                    var produtoQueSeraComprado = await db.Produtos.FindAsync(id);
+                    Item produto = new Item { NomeItem = produtoQueSeraComprado.Nome, Quantidade = 1, CodigoProduto = produtoQueSeraComprado.ProdutoId, PrecoUnitario = produtoQueSeraComprado.Preco };
                     carrinho.Add(produto);
+                    Session["carrinho"] = carrinho;
                 }
                 
                 Session["carrinho"] = carrinho;
@@ -54,7 +58,38 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public ActionResult Carrinho() => View();
+        public ActionResult RemoverItem(int? CodigoProduto)
+        {
+            if(CodigoProduto == null)
+            {
+                return HttpNotFound("Codigo do Produto Inválido! -> " + CodigoProduto.ToString());
+            }
+
+            List<Item> carrinho = (List<Item>)Session["carrinho"];
+            var itemQueSeraExcluido = carrinho.Find(c => c.CodigoProduto == CodigoProduto);
+
+            carrinho.Remove(itemQueSeraExcluido);
+
+            Session["carrinho"] = carrinho;
+
+            return RedirectToAction("Carrinho");
+        }
+
+        public ActionResult ListarVendas() => View();
+
+        [HttpGet]
+        public ActionResult CancelarPedido()
+        {
+            Session["carrinho"] = null;
+            return RedirectToAction("Index");
+        }
+   
+        //public async Task<ActionResult> ComprarParaEstoque()
+        //{
+        //    List<Estoque> produtos = new List<Estoque>();
+        //    Estoque p = new Estoque();
+        //    produtos = db.Estoques.Add(p);
+        //}
 
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)

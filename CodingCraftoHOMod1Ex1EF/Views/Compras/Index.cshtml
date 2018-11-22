@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Compra>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CompraId }) |
+                @Html.ActionLink("Detalhes da compra", "Details", new { id = item.CompraId }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.CompraId })
+            </td>
+        </tr>
+    }
+
+</table>

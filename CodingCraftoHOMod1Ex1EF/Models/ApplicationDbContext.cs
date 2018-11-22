@@ -18,8 +18,11 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
-
-        public System.Data.Entity.DbSet<CodingCraftoHOMod1Ex1EF.Models.Categoria> Categorias { get; set; }
-        public System.Data.Entity.DbSet<CodingCraftoHOMod1Ex1EF.Models.FornecedorProduto> FornecedoresProdutos { get; set; }
+        public DbSet<Estoque> Estoques { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<FornecedorProduto> FornecedoresProdutos { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<Item> Itens { get; set; }
     }
 }
