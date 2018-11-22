@@ -27,28 +27,29 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             if(Session["carrinho"] == null)
             {
                 List<Item> carrinho = new List<Item>();
-                Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                var produtoQueSeraComprado = await db.Produtos.FindAsync(id);
+                Item produto = new Item { NomeItem = produtoQueSeraComprado.Nome, Quantidade = 1, CodigoProduto = produtoQueSeraComprado.ProdutoId, PrecoUnitario = produtoQueSeraComprado.Preco };
                 carrinho.Add(produto);
                 Session["carrinho"] = carrinho;
             }
             else
             {
-                int quantidade = 0;
                 List<Item> carrinho = (List<Item>)Session["carrinho"];
 
-                var retorno = carrinho.Find(c => c.Produto.ProdutoId == id);
+                var retorno = carrinho.Find(c => c.CodigoProduto == id);
 
                 if(retorno != null)
                 {
-                    quantidade = retorno.Quantidade;
                     carrinho.Remove(retorno);
-                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = quantidade + 1 };
+                    Item produto = new Item { NomeItem = retorno.NomeItem, Quantidade = ++retorno.Quantidade, CodigoProduto = retorno.CodigoProduto, PrecoUnitario = retorno.PrecoUnitario };
                     carrinho.Add(produto);
                 }
                 else
                 {
-                    Item produto = new Item { Produto = await db.Produtos.FindAsync(id), Quantidade = 1 };
+                    var produtoQueSeraComprado = await db.Produtos.FindAsync(id);
+                    Item produto = new Item { NomeItem = produtoQueSeraComprado.Nome, Quantidade = 1, CodigoProduto = produtoQueSeraComprado.ProdutoId, PrecoUnitario = produtoQueSeraComprado.Preco };
                     carrinho.Add(produto);
+                    Session["carrinho"] = carrinho;
                 }
                 
                 Session["carrinho"] = carrinho;
@@ -57,15 +58,15 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public ActionResult RemoverItem(int? id)
+        public ActionResult RemoverItem(int? CodigoDoProduto)
         {
-            if(id == null)
+            if(CodigoDoProduto == null)
             {
-                return HttpNotFound();
+                return HttpNotFound("Codigo do Produto Inválido!");
             }
 
             List<Item> carrinho = (List<Item>)Session["carrinho"];
-            var itemQueSeraExcluido = carrinho.Find(c => c.ItemId == id);
+            var itemQueSeraExcluido = carrinho.Find(c => c.CodigoProduto == CodigoDoProduto);
 
             carrinho.Remove(itemQueSeraExcluido);
 

@@ -15,6 +15,6 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public decimal ValorDaVenda { get; set; }
 
-        public virtual ICollection<Item> itens { get; set; }
+        public virtual ICollection<Item> Itens { get; set; }
     }
 }

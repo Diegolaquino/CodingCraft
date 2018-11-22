@@ -33,19 +33,19 @@
         {
             <tr>
                 <td>
-                    @item.Produto.Categoria.Nome
+                    @item.CodigoProduto
                 </td>
                 <td>
-                    @item.Produto.Nome
+                    @item.NomeItem
                 </td>
                 <td>
-                    @item.Produto.Preco
+                    @item.PrecoUnitario
                 </td>
                 <td>
                     @item.Quantidade
                 </td>
                 <td class="btn btn-danger">
-                    @Html.ActionLink("X Remover", "RemoverItem", new { id = item.ItemId }, new { @class = "minhaClass"})
+                    @Html.ActionLink("X Remover", "RemoverItem", new { id = 0 }, new { @class = "minhaClass"})
                 </td>
             </tr>
         }
@@ -53,7 +53,7 @@
             <td>Total</td>
             <td>
                 @{ List<Item> carrinho = (List<Item>)Session["carrinho"];
-                    var total = carrinho.Sum(item => item.Produto.Preco * item.Quantidade);
+                    var total = carrinho.Sum(item => item.PrecoUnitario * item.Quantidade);
                 }
                 @total
             </td>

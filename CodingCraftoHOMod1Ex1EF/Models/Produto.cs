@@ -22,11 +22,12 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Preço")]
         [Required]
-        public Decimal Preco { get; set; }
+        public decimal Preco { get; set; }
 
         [Required]
         public int Cardinalidade { get; set; }
 
+        [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
 
         //public virtual ICollection<FornecedorProduto> ProdutoFornecedores { get; set; }

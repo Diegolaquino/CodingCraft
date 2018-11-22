@@ -38,11 +38,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             //    venda.itens.Add(item);
             //}
 
-            venda.itens = (List<Item>)Session["carrinho"];
+            venda.Itens = (List<Item>)Session["carrinho"];
 
-            await Create(venda);
+            db.Vendas.Add(venda);
 
-            return View("Index");
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Vendas/Details/5
@@ -71,7 +73,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "VendaId,DataDaVenda,ValorDaVenda, Categoria")] Venda venda)
+        public async Task<ActionResult> Create([Bind(Include = "VendaId,DataDaVenda,ValorDaVenda, Item")] Venda venda)
         {
             if (ModelState.IsValid)
             {
