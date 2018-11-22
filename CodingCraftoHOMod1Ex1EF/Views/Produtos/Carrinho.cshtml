@@ -45,7 +45,7 @@
                     @item.Quantidade
                 </td>
                 <td class="btn btn-danger">
-                    @Html.ActionLink("X Remover", "RemoverItem", new { id = item.CodigoProduto }, new { @class = "minhaClass"})
+                    @Html.ActionLink("X Remover", "RemoverItem", new { CodigoProduto = item.CodigoProduto }, new { @class = "minhaClass"})
                 </td>
             </tr>
         }

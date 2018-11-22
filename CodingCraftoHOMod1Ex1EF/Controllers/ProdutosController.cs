@@ -58,15 +58,15 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View("Carrinho");
         }
 
-        public ActionResult RemoverItem(int? CodigoDoProduto)
+        public ActionResult RemoverItem(int? CodigoProduto)
         {
-            if(CodigoDoProduto == null)
+            if(CodigoProduto == null)
             {
-                return HttpNotFound("Codigo do Produto Inválido!");
+                return HttpNotFound("Codigo do Produto Inválido! -> " + CodigoProduto.ToString());
             }
 
             List<Item> carrinho = (List<Item>)Session["carrinho"];
-            var itemQueSeraExcluido = carrinho.Find(c => c.CodigoProduto == CodigoDoProduto);
+            var itemQueSeraExcluido = carrinho.Find(c => c.CodigoProduto == CodigoProduto);
 
             carrinho.Remove(itemQueSeraExcluido);
 
