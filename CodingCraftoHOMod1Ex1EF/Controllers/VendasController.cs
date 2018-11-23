@@ -32,12 +32,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             venda.DataDaVenda = DateTime.Now;
             venda.ValorDaVenda = (decimal)total;
 
-            //foreach (var item in (List<Item>)Session["carrinho"])
-            //{
-            //    db.Itens.Add(item);
-            //    venda.itens.Add(item);
-            //}
-
             venda.Itens = (List<Item>)Session["carrinho"];
 
             db.Vendas.Add(venda);

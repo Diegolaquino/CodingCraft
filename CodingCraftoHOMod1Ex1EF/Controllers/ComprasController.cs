@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -52,15 +53,27 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CompraId,Valor,FornecedorId, CategoriaId, ProdutoId")] Compra compra)
+        public async Task<ActionResult> Create([Bind(Include = "CompraId,Valor,FornecedorId, CategoriaId, ProdutoId, Quantidade")] Compra compra)
         {
             if (ModelState.IsValid)
             {
-                compra.DataDaCompra = DateTime.Now;
-                db.Compras.Add(compra);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    compra.DataDaCompra = DateTime.Now;
+                    db.Compras.Add(compra);
+
+                    var produto = await db.Produtos.FindAsync(compra.ProdutoId);
+                    produto.Quantidade += compra.Quantidade;
+                    db.Entry(produto).State = EntityState.Modified;
+             
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
+
 
             ViewBag.FornecedorId = new SelectList(db.Fornecedores, "FornecedorId", "Nome", compra.FornecedorId);
             return View(compra);

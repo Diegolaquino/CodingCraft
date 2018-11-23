@@ -120,6 +120,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade")] Produto produto)
         {
+            produto.Quantidade = 0;
+
             if (ModelState.IsValid)
             {
                 db.Produtos.Add(produto);
