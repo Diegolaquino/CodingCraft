@@ -12,26 +12,35 @@
 
 <div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cardinalidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantidade)
-        </th>
-        <th></th>
-    </tr>
-       @foreach (var item in Model)
+<p>
+    @using (Html.BeginForm())
+    {
+    <p>
+        Pesquisar: @Html.TextBox("produtoPesquisado") <br />
+        <input type="submit" value="Filtrar" />
+    </p>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cardinalidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -57,8 +66,8 @@
             </tr>
         }
 
-</table>
+    </table>
 
-<div>
-    @Html.ActionLink("Vendas", "ListarVendas")
-</div>
+    <div>
+        @Html.ActionLink("Vendas", "ListarVendas")
+    </div>

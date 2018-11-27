@@ -21,25 +21,41 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View(await db.Vendas.ToListAsync());
         }
 
-        public async Task<ActionResult> FinalizarPedidoAsync(decimal? total)
+        public ActionResult EmailCliente() => View();
+        
+        public async Task<ActionResult> FinalizarPedidoAsync(string email)
         {
-            if (total == null)
+            //if (total == null)
+            //{
+            //    return HttpNotFound("Ocorreu um problema ao finalizar o pedido.");
+            //}
+
+            if (string.IsNullOrEmpty(email))
             {
-                return HttpNotFound();
+                return HttpNotFound("Você deve preencher o email do cliente");
+            }
+
+            var cliente = await db.Clientes.Where(c => c.Email.Contains(email.Trim())).SingleOrDefaultAsync();
+
+            if(cliente == null)
+            {
+                return HttpNotFound("Cliente Não cadastrado ou email incorreto!");
             }
 
             Venda venda = new Venda();
+            venda.Cliente = cliente;
+            venda.ClienteId = cliente.ClientId;
             venda.DataDaVenda = DateTime.Now;
-            venda.ValorDaVenda = (decimal)total;
-
             venda.Itens = (List<Item>)Session["carrinho"];
-
+            venda.ValorDaVenda = venda.Itens.Sum(i => i.Quantidade * i.PrecoUnitario);
             db.Vendas.Add(venda);
 
             await db.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Vendas");
         }
+
+        //public async Task<ActionResult> ()
 
         // GET: Vendas/Details/5
         public async Task<ActionResult> Details(int? id)
