@@ -48,6 +48,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View();
         }
 
+        public JsonResult ListaProdutos(int CategoriaId)
+        {
+            var produtoPorCategoria = (from p in db.Produtos where p.CategoriaId == CategoriaId select p.Nome).ToList(); //Nesse caso estou usando uma tabela ficticia com os telefones do cliente cadastrado
+
+            return Json(produtoPorCategoria, JsonRequestBehavior.AllowGet);
+        }
+
         // POST: Compras/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
