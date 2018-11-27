@@ -27,6 +27,8 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Required]
         public int Cardinalidade { get; set; }
 
+        public int Quantidade { get; set; }
+
         [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
 

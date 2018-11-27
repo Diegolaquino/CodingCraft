@@ -24,6 +24,9 @@ namespace CodingCraftoHOMod1Ex1EF
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/popper").Include(
+                     "~/Scripts/popper.js"));
         }
     }
 }

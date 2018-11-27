@@ -14,9 +14,15 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produtos
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string produtoPesquisado)
         {
             var produtoes = db.Produtos.Include(p => p.Categoria);
+
+            if(!string.IsNullOrEmpty(produtoPesquisado))
+            {
+                produtoes = produtoes.Where(p => p.Nome.Contains(produtoPesquisado));
+            }
+
             return View(await produtoes.ToListAsync());
         }
 
@@ -120,6 +126,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade")] Produto produto)
         {
+            produto.Quantidade = 0;
+
             if (ModelState.IsValid)
             {
                 db.Produtos.Add(produto);

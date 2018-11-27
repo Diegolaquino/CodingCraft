@@ -15,6 +15,10 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public decimal ValorDaVenda { get; set; }
 
+        public int ClienteId { get; set; }
+
         public virtual ICollection<Item> Itens { get; set; }
+
+        public virtual Cliente Cliente { get; set; }
     }
 }

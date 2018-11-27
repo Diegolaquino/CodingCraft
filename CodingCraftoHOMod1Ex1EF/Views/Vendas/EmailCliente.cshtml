@@ -1,0 +1,13 @@
+﻿<div class="form-group">
+    <p class="alert-info">
+        Preencha o email do cliente para finalizar o pedido:
+    </p>
+
+    @using (Html.BeginForm("FinalizarPedidoAsync", "Vendas"))
+    {
+    <p>
+        Email: @Html.TextBox("email")<br />
+        <input type="submit" value="Finzalizar Pedido" />
+    </p>
+    }
+</div>

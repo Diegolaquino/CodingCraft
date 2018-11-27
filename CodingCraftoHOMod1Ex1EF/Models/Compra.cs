@@ -17,6 +17,8 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Required]
         public decimal Valor { get; set; }
 
+        public decimal PrecoPorProduto { get; set; }
+
         public int FornecedorId { get; set; }
 
         public int CartegoriaId { get; set; }
