@@ -1,6 +1,10 @@
 # CodingCraft
 Projetos do Curso CodingCraft
 
+Tutor do curso -> https://pt.stackoverflow.com/users/2999/cigano-morrison-mendez
+
+Site do curso -> https://codingcraft.com.br/manifesto-coding-craft/
+
 Módulo 1 -> Entity Framework
 
 Módulo 2 -> Scaffolding
