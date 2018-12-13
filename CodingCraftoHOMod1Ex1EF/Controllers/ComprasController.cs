@@ -48,11 +48,25 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View();
         }
 
-        public JsonResult ListaProdutos(int CategoriaId)
+        [HttpGet]
+        public async Task<ActionResult> GetProdutos(int? id)
         {
-            var produtoPorCategoria = (from p in db.Produtos where p.CategoriaId == CategoriaId select p.Nome).ToList(); //Nesse caso estou usando uma tabela ficticia com os telefones do cliente cadastrado
+            var listaProdutos = new List<Produto>();
 
-            return Json(produtoPorCategoria, JsonRequestBehavior.AllowGet);
+
+            if (id == null)
+            {
+                return Json("Não há produtos");
+            }
+
+            listaProdutos = await GetProdutosPorIdCategoriaAsync((int)id);
+
+            return Json(listaProdutos, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<List<Produto>> GetProdutosPorIdCategoriaAsync(int idCategoria)
+        {
+            return (await db.Produtos.ToListAsync());
         }
 
         // POST: Compras/Create

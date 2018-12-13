@@ -1,7 +1,28 @@
 ﻿@model CodingCraftoHOMod1Ex1EF.Models.Compra
 
-<script src="~/Scripts/popper.js"></script>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script src="~/Scripts/popper.js"></script>*@
+<script type="text/javascript">
+    function listarProdutos(id) {
+        $list = $("#produto-target");
+        console.log("1");
+        $.ajax({
+            url: "GetProdutos",
+            type: "GET",
+            data: { id: id },
+            dataType: 'json',
+            traditional: true,
+            success: function (result) {
+                $list.empty();
+                $.each(result, function (item) {
+                    $list.append('<option value="' + item["produtoid"] + '"> ' + item["nome"] + ' </option>');
+                });
+            },
+            error: function () {
+                alert("Something went wrong call the police");
+            }
+        });
+    }
+</script>
 
 @using (Html.BeginForm())
 {
@@ -22,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CartegoriaId, "Categoria", htmlAttributes: new { @class = "control-label col-md" })
             <div class="col-md-10">
-                @Html.DropDownList("CategoriaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CategoriaId", null, htmlAttributes: new { @class = "form-control", @onchange = "listarProdutos(this.value)"})
                 @Html.ValidationMessageFor(model => model.CartegoriaId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProdutoId, "Produto", htmlAttributes: new { @class = "control-label col-md" })
             <div class="col-md-10">
-                @Html.DropDownList("ProdutoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ProdutoId", null, htmlAttributes: new { @class = "form-control", @id ="produto-target" })
                 @Html.ValidationMessageFor(model => model.ProdutoId, "", new { @class = "text-danger" })
             </div>
         </div>
