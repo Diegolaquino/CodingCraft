@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
+using System.Web.Helpers;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -51,22 +52,21 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProdutos(int? id)
         {
-            var listaProdutos = new List<Produto>();
+            db.Configuration.ProxyCreationEnabled = false;
 
-
-            if (id == null)
+            if(id == null)
             {
-                return Json("Não há produtos");
+                return HttpNotFound("Erro com a categoria.");
             }
+           
+            var lista = await GetProdutosPorIdCategoriaAsync((int)id);
 
-            listaProdutos = await GetProdutosPorIdCategoriaAsync((int)id);
-
-            return Json(listaProdutos, JsonRequestBehavior.AllowGet);
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<List<Produto>> GetProdutosPorIdCategoriaAsync(int idCategoria)
         {
-            return (await db.Produtos.ToListAsync());
+            return (await db.Produtos.Where(p => p.CategoriaId == idCategoria).ToListAsync());
         }
 
         // POST: Compras/Create

@@ -4,7 +4,7 @@
 <script type="text/javascript">
     function listarProdutos(id) {
         $list = $("#produto-target");
-        console.log("1");
+        $list.empty();
         $.ajax({
             url: "GetProdutos",
             type: "GET",
@@ -13,11 +13,11 @@
             traditional: true,
             success: function (result) {
                 $list.empty();
-                $.each(result, function (item) {
-                    $list.append('<option value="' + item["produtoid"] + '"> ' + item["nome"] + ' </option>');
+                $.each(result, function (i, item) {
+                    $list.append('<option value="' + item["ProdutoId"] + '"> ' + item["Nome"] + ' </option>');
                 });
             },
-            error: function () {
+            error: function (result) {
                 alert("Something went wrong call the police");
             }
         });
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProdutoId, "Produto", htmlAttributes: new { @class = "control-label col-md" })
             <div class="col-md-10">
-                @Html.DropDownList("ProdutoId", null, htmlAttributes: new { @class = "form-control", @id ="produto-target" })
+                @Html.DropDownList("ProdutoId", null,"Selecionar Produto", htmlAttributes: new { @class = "form-control", @id ="produto-target" })
                 @Html.ValidationMessageFor(model => model.ProdutoId, "", new { @class = "text-danger" })
             </div>
         </div>
