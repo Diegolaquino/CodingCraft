@@ -31,9 +31,9 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
                 new Models.Categoria { CategoriaId = 3, Nome = "Biscoitos" });
 
             context.Produtos.AddOrUpdate(p => p.Nome,
-                new Models.Produto { Nome = "KitKat", CategoriaId = 1, Preco = 5, Cardinalidade = 3 },
-                new Models.Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 5, Cardinalidade = 3 },
-                new Models.Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 5, Cardinalidade = 4 });
+                new Models.Produto { Nome = "KitKat", CategoriaId = 1, Preco = 5, Cardinalidade = 3, ProdutoId = 1, Quantidade = 5  },
+                new Models.Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 5, Cardinalidade = 3, ProdutoId = 2, Quantidade = 5 },
+                new Models.Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 5, Cardinalidade = 4, ProdutoId = 3, Quantidade = 5 });
 
             context.SaveChanges();
         }

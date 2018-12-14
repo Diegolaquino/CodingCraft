@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
+using System.Web.Helpers;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -46,6 +47,26 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome");
 
             return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetProdutos(int? id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            if(id == null)
+            {
+                return HttpNotFound("Erro com a categoria.");
+            }
+           
+            var lista = await GetProdutosPorIdCategoriaAsync((int)id);
+
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<List<Produto>> GetProdutosPorIdCategoriaAsync(int idCategoria)
+        {
+            return (await db.Produtos.Where(p => p.CategoriaId == idCategoria).ToListAsync());
         }
 
         // POST: Compras/Create
