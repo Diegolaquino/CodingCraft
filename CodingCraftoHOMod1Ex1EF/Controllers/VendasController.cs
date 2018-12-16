@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -42,16 +43,30 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                 return HttpNotFound("Cliente Não cadastrado ou email incorreto!");
             }
 
-            Venda venda = new Venda();
-            venda.Cliente = cliente;
-            venda.ClienteId = cliente.ClientId;
-            venda.DataDaVenda = DateTime.Now;
-            venda.Itens = (List<Item>)Session["carrinho"];
-            venda.ValorDaVenda = venda.Itens.Sum(i => i.Quantidade * i.PrecoUnitario);
-            db.Vendas.Add(venda);
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                Venda venda = new Venda();
+                venda.Cliente = cliente;
+                venda.ClienteId = cliente.ClientId;
+                venda.DataDaVenda = DateTime.Now;
+                venda.Itens = (List<Item>)Session["carrinho"];
+                venda.ValorDaVenda = venda.Itens.Sum(i => i.Quantidade * i.PrecoUnitario);
+                db.Vendas.Add(venda);
 
-            await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
 
+                foreach(var p in venda.Itens)
+                {
+                    var produtoQueSeraAtualizado = db.Produtos.Find(p.ItemId);
+                    produtoQueSeraAtualizado.Quantidade -= p.Quantidade;
+                    db.Entry(produtoQueSeraAtualizado).State = EntityState.Modified;
+                }
+
+                db.SaveChanges();
+
+                scope.Complete();
+            }
+          
             return RedirectToAction("Index", "Vendas");
         }
 
