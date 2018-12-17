@@ -57,7 +57,11 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                 foreach(var p in venda.Itens)
                 {
-                    var produtoQueSeraAtualizado = db.Produtos.Find(p.ItemId);
+                    var produtoQueSeraAtualizado = db.Produtos.Find(p.CodigoProduto);
+                    if(produtoQueSeraAtualizado.Quantidade < p.Quantidade)
+                    {
+                        return HttpNotFound("Não há quantidade suficiente - " + produtoQueSeraAtualizado.Nome.ToString() + "- quantidade atual " + produtoQueSeraAtualizado.Quantidade.ToString());
+                    }
                     produtoQueSeraAtualizado.Quantidade -= p.Quantidade;
                     db.Entry(produtoQueSeraAtualizado).State = EntityState.Modified;
                 }
@@ -69,6 +73,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
           
             return RedirectToAction("Index", "Vendas");
         }
+
+        public ActionResult ListarVendas() => View();
 
         //public async Task<ActionResult> ()
 
