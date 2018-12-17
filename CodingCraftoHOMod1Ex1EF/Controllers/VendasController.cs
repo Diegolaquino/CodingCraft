@@ -74,6 +74,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return RedirectToAction("Index", "Vendas");
         }
 
+        public ActionResult ListarVendas() => View();
+
         //public async Task<ActionResult> ()
 
         // GET: Vendas/Details/5
