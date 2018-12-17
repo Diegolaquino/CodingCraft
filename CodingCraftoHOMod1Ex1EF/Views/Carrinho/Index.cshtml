@@ -1,0 +1,59 @@
+﻿
+@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.ProdutoViewModel>
+
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Produto", "Create")
+</p>
+
+<div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cardinalidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cardinalidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.ActionLink("Comprar", "Comprar", new { id = item.ProdutoId }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        @Html.ActionLink("Vendas", "ListarVendas")
+    </div>
