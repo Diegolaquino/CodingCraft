@@ -4,6 +4,45 @@
     ViewBag.Title = "Produtos";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Pega os dados do banco de dados para preencher o datatable
+        var oTable = $("#tabelaProdutos").DataTable({
+
+            "language": {
+                "lengthMenu": "Exibe _MENU_ Registros por página",
+                "search": "Procurar",
+                "paginate": { "previous": "Retorna", "next": "Avança" },
+                "zeroRecords": "Nada foi encontrado",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem registros",
+                "infoFiltered": "(filtrado de _MAX_ regitros totais)"
+            },
+            "processing": true, // mostrar a progress bar
+            //"serverSide": true, // processamento no servidor
+            "filter": true, // habilita o filtro(search box)
+            "lengthMenu": [[3, 5, 10, 25, 50, -1], [3, 5, 10, 25, 50, "Todos"]],
+            "pageLength": 3, // define o tamanho da página
+
+            "ajax": {
+                "url": "/Produtos/Index",
+                "type": "GET",
+                "dataType": "json"
+            },
+            "columns": [],
+            { "data": "ProdutoId", "title": "Código", "autowidth": true },
+            { "data": "Nome", "title": "Nome", "autowidth": true },
+            { "data": "Preco", "title": "Preço", "autowidth": true },
+            { "data": "Quantidade", "title": "Quantidade", "autowidth": true },
+            { "data": "Cardinalidade", "title": "Cardinalidade", "autowidth": true },
+                      ]
+                ]
+    });
+        });
+</script>
+
+
+
 <h2>Index</h2>
 
 <p>
@@ -12,16 +51,8 @@
 
 <div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
 
-<p>
-    @using (Html.BeginForm())
-    {
-    <p>
-        Pesquisar: @Html.TextBox("produtoPesquisado") <br />
-        <input type="submit" value="Filtrar" />
-    </p>
-    }
-
-    <table class="table">
+<table class="table" id="tabelaProdutos">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Categoria.Nome)
@@ -40,33 +71,12 @@
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Preco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cardinalidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantidade)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoId })
-                </td>
-            </tr>
-        }
+    </thead>
 
-    </table>
 
-    <div>
-        @Html.ActionLink("Vendas", "ListarVendas")
-    </div>
+</table>
+
+<div>
+    @Html.ActionLink("Vendas", "ListarVendas")
+</div>
+
