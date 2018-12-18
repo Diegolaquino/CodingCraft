@@ -9,24 +9,39 @@
 <p>
     @Html.ActionLink("Cadastrar Categoria", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th></th>
-    </tr>
+<table class="table" id="tabelaCategorias">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CategoriaId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.CategoriaId })
-        </td>
-    </tr>
-}
-
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.CategoriaId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.CategoriaId })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaCategorias').DataTable();
+    });
+</script>
+
