@@ -14,16 +14,17 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produtos
-        public async Task<ActionResult> Index(string produtoPesquisado)
+        public ActionResult Index()
         {
-            var produtoes = db.Produtos.Include(p => p.Categoria);
+            
+            var produtoes = db.Produtos.ToList();
 
-            if(!string.IsNullOrEmpty(produtoPesquisado))
-            {
-                produtoes = produtoes.Where(p => p.Nome.Contains(produtoPesquisado));
-            }
+            //if(!string.IsNullOrEmpty(produtoPesquisado))
+            //{
+            //    produtoes = produtoes.Where(p => p.Nome.Contains(produtoPesquisado));
+            //}
 
-            return View(await produtoes.ToListAsync());
+            return View(produtoes);
         }
 
         // GET: Produtos/Details/5

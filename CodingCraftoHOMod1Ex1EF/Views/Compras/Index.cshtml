@@ -3,32 +3,47 @@
 <p>
     @Html.ActionLink("Cadastrar Compra", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Fornecedor.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Valor)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table" id="tabelaCompras">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CompraId }) |
-                @Html.ActionLink("Detalhes da compra", "Details", new { id = item.CompraId }) |
-                @Html.ActionLink("Excluir", "Delete", new { id = item.CompraId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.CompraId }) |
+                    @Html.ActionLink("Detalhes da compra", "Details", new { id = item.CompraId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.CompraId })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaCompras').DataTable();
+    });
+</script>
+

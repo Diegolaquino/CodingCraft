@@ -12,16 +12,8 @@
 
 <div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
 
-<p>
-    @using (Html.BeginForm())
-    {
-    <p>
-        Pesquisar: @Html.TextBox("produtoPesquisado") <br />
-        <input type="submit" value="Filtrar" />
-    </p>
-    }
-
-    <table class="table">
+<table class="table" id="tabelaProdutos">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Categoria.Nome)
@@ -40,6 +32,8 @@
             </th>
             <th></th>
         </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -64,9 +58,20 @@
                 </td>
             </tr>
         }
+    </tbody>
+</table>
 
-    </table>
+<div>
+    @Html.ActionLink("Vendas", "ListarVendas")
+</div>
 
-    <div>
-        @Html.ActionLink("Vendas", "ListarVendas")
-    </div>
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaProdutos').DataTable();
+    });
+</script>

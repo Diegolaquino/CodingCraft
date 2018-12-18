@@ -9,24 +9,39 @@
 <p>
     @Html.ActionLink("Cadastrar Fornecedor", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FornecedorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FornecedorId })
-        </td>
-    </tr>
-}
+<table class="table" id="tabelaFornecedores">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FornecedorId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FornecedorId })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaFornecedores').DataTable();
+    });
+</script>
