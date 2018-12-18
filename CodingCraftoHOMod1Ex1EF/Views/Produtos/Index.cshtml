@@ -65,9 +65,9 @@
     @Html.ActionLink("Vendas", "ListarVendas")
 </div>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
-<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
 
 
 <script type="text/javascript">
