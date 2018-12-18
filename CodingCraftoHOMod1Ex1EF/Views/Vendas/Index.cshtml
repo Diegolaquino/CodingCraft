@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Venda>
 
-    <p>
-        @Html.ActionLink("Cadastrar Venda", "Create")
-    </p>
-    <table class="table">
+<p>
+    @Html.ActionLink("Cadastrar Venda", "Create")
+</p>
+<table class="table" id="tabelaVendas">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DataDaVenda)
@@ -16,24 +17,38 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataDaVenda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorDaVenda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Nome)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.VendaId }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.VendaId }) |
-                @Html.ActionLink("Deletar", "Delete", new { id=item.VendaId })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDaVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorDaVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.VendaId }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.VendaId }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.VendaId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaVendas').DataTable();
+    });
+</script>
