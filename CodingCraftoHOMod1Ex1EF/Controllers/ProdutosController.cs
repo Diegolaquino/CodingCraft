@@ -16,7 +16,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            db.Configuration.ProxyCreationEnabled = false;
+            
             var produtoes = db.Produtos.ToList();
 
             //if(!string.IsNullOrEmpty(produtoPesquisado))
@@ -24,7 +24,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             //    produtoes = produtoes.Where(p => p.Nome.Contains(produtoPesquisado));
             //}
 
-            return Json(new { Data = produtoes }, JsonRequestBehavior.AllowGet);
+            return View(produtoes);
         }
 
         // GET: Produtos/Details/5
