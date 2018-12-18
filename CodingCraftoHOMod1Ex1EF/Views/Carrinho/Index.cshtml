@@ -9,7 +9,8 @@
 
 <div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
 
-    <table class="table">
+<table class="table" id="vitrineProdutos">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -25,6 +26,8 @@
             </th>
             <th></th>
         </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -47,9 +50,16 @@
                 </td>
             </tr>
         }
+    </tbody>
+</table>
 
-    </table>
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
 
-    <div>
-        @Html.ActionLink("Vendas", "ListarVendas")
-    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#vitrineProdutos').DataTable();
+    });
+</script>
+
