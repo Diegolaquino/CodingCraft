@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Evento>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tabelaEventos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeAviso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aviso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventoCompletado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeCadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeAviso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aviso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventoCompletado)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EventoId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Scripts.Render("~/bundles/jqueryMin")
+@Scripts.Render("~/bundles/datatablesMin")
+@Scripts.Render("~/bundles/datatablesCss")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabelaEventos').DataTable();
+    });
+</script>

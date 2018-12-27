@@ -24,5 +24,6 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<Item> Itens { get; set; }
+        public DbSet<Evento> Eventos { get; set; }
     }
 }
