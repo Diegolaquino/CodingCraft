@@ -29,7 +29,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             IEnumerable produtos = from p in db.Produtos select p.Nome;
 
-            ViewBag.Produtos = new SelectList(produtos,"Nome");
+            ViewBag.NomeProduto = new SelectList(produtos,"Nome");
             return View();
         }
 
@@ -38,7 +38,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EvenoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado, NomeProduto")] Evento evento)
+        public async Task<ActionResult> Create([Bind(Include = "EventoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado,NomeProduto")] Evento evento)
         {
             evento.DataDeCadastro = DateTime.Now;
             evento.EventoCompletado = false;

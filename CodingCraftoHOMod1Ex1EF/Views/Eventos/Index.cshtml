@@ -35,7 +35,14 @@
                     @Html.DisplayFor(modelItem => item.Aviso)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventoCompletado)
+                    @if (item.EventoCompletado == false)
+                    {
+                        <span>Não</span>
+                    }
+                    else
+                    {
+                        <span>Sim</span>
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
