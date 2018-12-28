@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+CodingCraftoHOMod1Ex1EF/Migrations/201812271932263_first.cs
+CodingCraftoHOMod1Ex1EF/Migrations/201812271932263_first.resx
+CodingCraftoHOMod1Ex1EF/Migrations/201812271932263_first.Designer.cs

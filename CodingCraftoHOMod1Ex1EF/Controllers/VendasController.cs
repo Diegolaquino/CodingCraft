@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
+using Hangfire;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -70,13 +71,24 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                 scope.Complete();
             }
-          
+
+            //string mensagem = "Os produtos abaixo estão com o estoque baixo";
+            //var estoque = db.Produtos.Where(p => p.Quantidade <= 10).ToList();
+
+            //if (estoque.Any())
+            //{
+            //    BackgroundJob.Schedule(() => AvisoProximaCompra(), Cron.Minutely);
+            //}
+
             return RedirectToAction("Index", "Vendas");
         }
 
-        public ActionResult ListarVendas() => View();
+        //private void AvisoProximaCompra()
+        //{
+        //    db.Clientes.ToList();
+        //}
 
-        //public async Task<ActionResult> ()
+        public ActionResult ListarVendas() => View();
 
         // GET: Vendas/Details/5
         public async Task<ActionResult> Details(int? id)
