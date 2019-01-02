@@ -1,0 +1,75 @@
+﻿@using CodingCraftoHOMod1Ex1EF.Models
+
+<style>
+    table, tr, th, td{
+        border-style: solid;
+        text-align: center;
+    }
+</style>
+<table>
+    <thead>
+        <tr>Despesas</tr>
+        <tr>
+            <th>Fornecedor</th>
+            <th>Valor R$</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{decimal somaDespesa = 0;}
+        @foreach (var item in ViewData["Despesas"] as List<CompraViewModel>)
+        {
+            <tr>
+                <td>@item.Fornecedor</td>
+                <td>@item.Valor</td>
+                @{ somaDespesa += item.Valor; }
+            </tr>
+
+        }
+        <tr>
+            <td>
+                Total Despesa:
+            </td>
+            <td>
+                @somaDespesa
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<hr />
+
+
+<table>
+    <thead>
+        <tr>Receitas</tr>
+        <tr>
+            <th>Cliente</th>
+            <th>Valor R$</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{decimal somaReceita = 0;}
+
+        @foreach (var item in ViewData["Receitas"] as List<VendaViewModel>)
+        {
+            <tr>
+                <td>@item.Cliente</td>
+                <td>@item.Valor</td>
+                 @{ somaReceita += item.Valor; }
+            </tr>
+
+        }
+        <tr>
+            <td>
+                Total Receita:
+            </td>
+            <td>
+                @somaReceita
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div> Total: <span>@{decimal total = somaReceita - somaDespesa;} @total</span></div>
