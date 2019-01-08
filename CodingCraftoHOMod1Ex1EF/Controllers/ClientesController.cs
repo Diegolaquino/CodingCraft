@@ -47,7 +47,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ClientId,Nome,Email")] Cliente cliente)
+        public async Task<ActionResult> Create([Bind(Include = "ClienteId,Nome,Email")] Cliente cliente)
         {
             //var verificaCliente = await db.Clientes.Where(c => c.Email == cliente.Email).SingleAsync();
 
@@ -86,7 +86,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ClientId,Nome,Email")] Cliente cliente)
+        public async Task<ActionResult> Edit([Bind(Include = "ClienteId,Nome,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

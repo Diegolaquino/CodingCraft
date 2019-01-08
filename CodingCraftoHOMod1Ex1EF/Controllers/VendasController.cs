@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
 using Hangfire;
+using System.Net.Mail;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -27,11 +28,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         
         public async Task<ActionResult> FinalizarPedidoAsync(string email)
         {
-            //if (total == null)
-            //{
-            //    return HttpNotFound("Ocorreu um problema ao finalizar o pedido.");
-            //}
-
             if (string.IsNullOrEmpty(email))
             {
                 return HttpNotFound("Você deve preencher o email do cliente");
@@ -46,11 +42,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
-                Venda venda = new Venda();
-                venda.Cliente = cliente;
-                venda.ClienteId = cliente.ClientId;
-                venda.DataDaVenda = DateTime.Now;
-                venda.Itens = (List<Item>)Session["carrinho"];
+                Venda venda = new Venda
+                {
+                    Cliente = cliente,
+                    ClienteId = cliente.ClienteId,
+                    DataDaVenda = DateTime.Now,
+                    Itens = (List<Item>)Session["carrinho"]
+                };
                 venda.ValorDaVenda = venda.Itens.Sum(i => i.Quantidade * i.PrecoUnitario);
                 db.Vendas.Add(venda);
 
@@ -58,7 +56,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                 foreach(var p in venda.Itens)
                 {
-                    var produtoQueSeraAtualizado = db.Produtos.Find(p.CodigoProduto);
+                    var produtoQueSeraAtualizado = await db.Produtos.FindAsync(p.CodigoProduto);
                     if(produtoQueSeraAtualizado.Quantidade < p.Quantidade)
                     {
                         return HttpNotFound("Não há quantidade suficiente - " + produtoQueSeraAtualizado.Nome.ToString() + "- quantidade atual " + produtoQueSeraAtualizado.Quantidade.ToString());
@@ -67,26 +65,48 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                     db.Entry(produtoQueSeraAtualizado).State = EntityState.Modified;
                 }
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
 
                 scope.Complete();
             }
 
-            //string mensagem = "Os produtos abaixo estão com o estoque baixo";
-            //var estoque = db.Produtos.Where(p => p.Quantidade <= 10).ToList();
-
-            //if (estoque.Any())
-            //{
-            //    BackgroundJob.Schedule(() => AvisoProximaCompra(), Cron.Minutely);
-            //}
+            BackgroundJob.Enqueue(() => ConfereQuantidadeProdutosAsync());
 
             return RedirectToAction("Index", "Vendas");
         }
 
-        //private void AvisoProximaCompra()
-        //{
-        //    db.Clientes.ToList();
-        //}
+        public async Task ConfereQuantidadeProdutosAsync()
+        {
+            var confereQuantidade = await db.Produtos.Where(p => p.Quantidade < 10).ToListAsync();
+
+            if(confereQuantidade.Any())
+            { 
+                var smtpClient = new SmtpClient
+                {
+                    Host = "smtp-mail.outlook.com", // SMTP
+                    Port = 587, // Porta
+                    EnableSsl = true,
+                    // login //
+                    Credentials = new NetworkCredential("diegol.aquino@outlook.com", "senha")
+                };
+
+                using (var message = new MailMessage("diegol.aquino@outlook.com", "diegol.aquino@gmail.com")
+                {
+                    Subject = "Lembrete de Compra de Produtos",
+                    Body = "Os seguintes produtos estão com estoque baixo: "
+                })
+                {
+                    foreach(Produto p in confereQuantidade)
+                    {
+                        message.Body += p.Nome.ToString() + ", ";
+                    }
+
+                    await smtpClient.SendMailAsync(message);
+                }
+            }
+
+            
+        }
 
         public ActionResult ListarVendas() => View();
 
