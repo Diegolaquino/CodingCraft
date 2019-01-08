@@ -96,6 +96,12 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Postal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
+      <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.4.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -222,6 +228,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContabilidadesController.cs" />
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\FornecedoresProdutosController.cs" />
@@ -244,6 +251,8 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\CompraViewModel.cs" />
+    <Compile Include="Models\Enums\TipoDeEvento.cs" />
+    <Compile Include="Models\EnvioDeEmailModel.cs" />
     <Compile Include="Models\Estoque.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Fornecedor.cs" />
@@ -625,6 +634,11 @@
     <Content Include="Views\Eventos\Index.cshtml" />
     <Content Include="Views\Eventos\Delete.cshtml" />
     <Content Include="Views\Contabilidades\Index.cshtml" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Emails\Sent.cshtml" />
+    <Content Include="Views\Emails\Index.cshtml" />
+    <Content Include="Views\Emails\EmailCobranca.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

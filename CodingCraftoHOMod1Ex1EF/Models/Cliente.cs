@@ -11,7 +11,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
     public class Cliente
     {
         [Key]
-        public int ClientId { get; set; }
+        public int ClienteId { get; set; }
 
         [Required]
         [StringLength(100)]

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Collections;
+using CodingCraftoHOMod1Ex1EF.Models.Enums;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -25,11 +26,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Eventos/Create
         public ActionResult Create()
         {
-            db.Configuration.ProxyCreationEnabled = false;
-
-            IEnumerable produtos = from p in db.Produtos select p.Nome;
-
-            ViewBag.NomeProduto = new SelectList(produtos,"Nome");
+            //db.Configuration.ProxyCreationEnabled = false;
+            
             return View();
         }
 
@@ -38,7 +36,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EventoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado,NomeProduto")] Evento evento)
+        public async Task<ActionResult> Create([Bind(Include = "EventoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado,TipoDeEvento")] Evento evento)
         {
             evento.DataDeCadastro = DateTime.Now;
             evento.EventoCompletado = false;
@@ -73,7 +71,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "EvenoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado,NomeProduto")] Evento evento)
+        public async Task<ActionResult> Edit([Bind(Include = "EvenoId,DataDeCadastro,DataDeAviso,Aviso,EventoCompletado,TipoDeEvento")] Evento evento)
         {
             if (ModelState.IsValid)
             {

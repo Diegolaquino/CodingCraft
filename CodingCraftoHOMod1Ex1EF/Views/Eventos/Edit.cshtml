@@ -1,58 +1,66 @@
 ﻿@model CodingCraftoHOMod1Ex1EF.Models.Evento
+@using CodingCraftoHOMod1Ex1EF.Models.Enums
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Evento</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.EventoId)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.DataDeCadastro, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DataDeCadastro, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DataDeCadastro, "", new { @class = "text-danger" })
-                </div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Evento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EventoId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoDeEvento, "Nome do Produto", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TipoDeEvento", EnumHelper.GetSelectList(typeof(TipoDeEvento)), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TipoDeEvento, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.DataDeAviso, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DataDeAviso, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DataDeAviso, "", new { @class = "text-danger" })
-                </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataDeCadastro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataDeCadastro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataDeCadastro, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Aviso, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Aviso, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Aviso, "", new { @class = "text-danger" })
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataDeAviso, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataDeAviso, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataDeAviso, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.EventoCompletado, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.EventoCompletado)
-                        @Html.ValidationMessageFor(model => model.EventoCompletado, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aviso, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Aviso, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Aviso, "", new { @class = "text-danger" })
             </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EventoCompletado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.EventoCompletado)
+                    @Html.ValidationMessageFor(model => model.EventoCompletado, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Voltar", "Index")
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
     </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>

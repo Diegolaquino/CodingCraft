@@ -32,26 +32,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.EventoCompletado)
         </dt>
-
-        <dd>
-            @if (Model.EventoCompletado == false)
-            {
-                <span>Não</span>
-            }
-            else
-            {
-                <span>Sim</span>
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeProduto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
@@ -59,7 +39,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Voltar", "Index")
         </div>
     }
 </div>

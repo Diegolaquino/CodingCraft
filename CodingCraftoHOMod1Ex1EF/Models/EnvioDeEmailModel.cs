@@ -6,21 +6,12 @@ using System.Web;
 
 namespace CodingCraftoHOMod1Ex1EF.Models
 {
-    public class Venda
+    public class EnvioDeEmailModel
     {
-        [Key]
-        public int VendaId { get; set; }
-
-        public DateTime DataDaVenda { get; set; }
-
-        public decimal ValorDaVenda { get; set; }
-
         public int ClienteId { get; set; }
-
-        public virtual ICollection<Item> Itens { get; set; }
-
         public virtual Cliente Cliente { get; set; }
 
-        //public bool Paga { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Mensagem { get; set; }
     }
 }

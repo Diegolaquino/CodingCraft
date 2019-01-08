@@ -13,6 +13,9 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Key]
         public int EventoId { get; set; }
 
+        [Display(Name = "Tipo de Evento")]
+        public int TipoDeEvento { get; set; }
+
         [Display(Name = "Data de Cadastro")]
         public DateTime DataDeCadastro { get; set; }
 
@@ -25,8 +28,5 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         [Display(Name = "Evento Completado")]
         public bool EventoCompletado { get; set; }
-        
-        [Display(Name ="Nome do Produto")]
-        public string NomeProduto { get; set; }
     }
 }
