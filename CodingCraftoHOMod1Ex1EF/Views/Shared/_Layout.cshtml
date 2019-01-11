@@ -20,42 +20,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">    
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendas</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="~/Vendas/Create">Inserir Venda</a>
-                        <a class="dropdown-item" href="~/Vendas/Index">Visualizar Vendas</a>
-                    </div>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="~/Compras/Create">Inserir Compra</a>
-                        <a class="dropdown-item" href="~/Compras/Index">Visualizar Compras</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Produtos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="~/Produtos/Create">Cadastrar Produto</a>
-                        <a class="dropdown-item" href="~/Produtos/Index">Visualizar Produtos</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categoria
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="~/Categorias/Create">Cadastrar Categoria</a>
-                        <a class="dropdown-item" href="~/Categorias/Index">Visualizar Categorias</a>
-                    </div>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Fornecedores
@@ -67,11 +33,36 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Lembretes
+                        Categoria
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="~/Emails/Index">Emails de Cobrança</a>
-                        <a class="dropdown-item" href="~/Eventos/Index">Cadastro de lembretes</a>
+                        <a class="dropdown-item" href="~/Categorias/Create">Cadastrar Categoria</a>
+                        <a class="dropdown-item" href="~/Categorias/Index">Visualizar Categorias</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Produtos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Produtos/Create">Cadastrar Produto</a>
+                        <a class="dropdown-item" href="~/Produtos/Index">Visualizar Produtos</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Fornecedor do Produto
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/FornecedoresProdutos/Create">Cadastrar FornecedorProduto</a>
+                        <a class="dropdown-item" href="~/FornecedoresProdutos/Index">Visualizar Fornecedores</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Compras/Create">Inserir Compra</a>
+                        <a class="dropdown-item" href="~/Compras/Index">Visualizar Compras</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -81,9 +72,32 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="~/Clientes/Create">Cadastrar Cliente</a>
                         <a class="dropdown-item" href="~/Clientes/Index">Visualizar Clientes</a>
-
                     </div>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caixa</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Contabilidades/Index">Visualizar Vendas</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Lembretes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Emails/Index">Emails de Cobrança</a>
+                        <a class="dropdown-item" href="~/Eventos/Index">Cadastro de lembretes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendas</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Vendas/Create">Inserir Venda</a>
+                        <a class="dropdown-item" href="~/Vendas/Index">Visualizar Vendas</a>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </nav>

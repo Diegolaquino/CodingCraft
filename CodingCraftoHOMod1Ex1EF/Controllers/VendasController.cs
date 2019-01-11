@@ -21,6 +21,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Vendas
         public async Task<ActionResult> Index()
         {
+            var vendas = db.Vendas.Include(v => v.Cliente).Include(v => v.Itens);
             return View(await db.Vendas.ToListAsync());
         }
 

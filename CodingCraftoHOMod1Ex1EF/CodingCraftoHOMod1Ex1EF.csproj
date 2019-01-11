@@ -238,10 +238,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812271932263_first.cs" />
-    <Compile Include="Migrations\201812271932263_first.Designer.cs">
-      <DependentUpon>201812271932263_first.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -608,7 +604,6 @@
     <Content Include="Views\FornecedoresProdutos\Create.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Delete.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Details.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Edit.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Index.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
@@ -650,11 +645,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812271932263_first.resx">
-      <DependentUpon>201812271932263_first.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

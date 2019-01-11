@@ -8,6 +8,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
     [Table("Fornecedores")]
     public class Fornecedor
     {
+        [Display(Name = "Fornecedor")]
         [Key]
         public int FornecedorId { get; set; }
 

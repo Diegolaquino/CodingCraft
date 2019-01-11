@@ -8,11 +8,9 @@ namespace CodingCraftoHOMod1Ex1EF.Models
     [Table("Produtos")]
     public class Produto
     {
+        [Display(Name = "Produto")]
         [Key]
         public int ProdutoId { get; set; }
-
-        [Display(Name = "Categoria")]
-        public int CategoriaId { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -29,9 +27,11 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public int Quantidade { get; set; }
 
-        [ForeignKey("CategoriaId")]
+        [Display(Name = "Categoria")]
+        public int CategoriaId { get; set; }
+
         public virtual Categoria Categoria { get; set; }
 
-        //public virtual ICollection<FornecedorProduto> ProdutoFornecedores { get; set; }
+        public virtual ICollection<FornecedorProduto> ProdutoFornecedores { get; set; }
     }
 }
