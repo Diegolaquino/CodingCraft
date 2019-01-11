@@ -232,16 +232,11 @@
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\FornecedoresProdutosController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\VendasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812271932263_first.cs" />
-    <Compile Include="Migrations\201812271932263_first.Designer.cs">
-      <DependentUpon>201812271932263_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -253,7 +248,6 @@
     <Compile Include="Models\CompraViewModel.cs" />
     <Compile Include="Models\Enums\TipoDeEvento.cs" />
     <Compile Include="Models\EnvioDeEmailModel.cs" />
-    <Compile Include="Models\Estoque.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Fornecedor.cs" />
     <Compile Include="Models\FornecedorProduto.cs" />
@@ -569,7 +563,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -611,7 +604,6 @@
     <Content Include="Views\FornecedoresProdutos\Create.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Delete.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Details.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Edit.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Index.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
@@ -653,11 +645,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812271932263_first.resx">
-      <DependentUpon>201812271932263_first.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

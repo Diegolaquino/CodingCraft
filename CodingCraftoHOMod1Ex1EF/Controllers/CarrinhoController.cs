@@ -1,8 +1,11 @@
 ﻿using CodingCraftoHOMod1Ex1EF.Models;
+using CodingCraftoHOMod1Ex1EF.Models.Enums;
+using Hangfire;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,8 +16,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        #region Index
         public ActionResult Index()
         {
+
             //ViewModelProduto
             var produtosViewModel = from p in db.Produtos
                                     select new ProdutoViewModel
@@ -25,9 +30,17 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                                         Cardinalidade = p.Cardinalidade,
                                         Preco = p.Preco
                                     };
+
+            //Verifica se há algum pagamento agendado para o dia
+            BackgroundJob.Enqueue(() => LembretePagamentoFornecedor());
+
             return View(produtosViewModel.ToList());
         }
+        #endregion
 
+        public ActionResult Carrinho() => View();
+
+        #region Método Comprar
         public async Task<ActionResult> Comprar(int id)
         {
             if (Session["carrinho"] == null)
@@ -63,7 +76,9 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             return RedirectToAction("Carrinho");
         }
+        #endregion
 
+        #region Método que remove produto do carrinho
         public ActionResult RemoverItem(int? CodigoProduto)
         {
             if (CodigoProduto == null)
@@ -80,14 +95,56 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             return RedirectToAction("Carrinho");
         }
+        #endregion
 
+        #region Método de Cancelamento do pedido
         [HttpGet]
         public ActionResult CancelarPedido()
         {
             Session["carrinho"] = null;
             return RedirectToAction("Index");
         }
+        #endregion
 
-        public ActionResult Carrinho() => View();
+        #region Método LembretePagamentoFornecedor
+        public async Task LembretePagamentoFornecedor()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            DateTime currentDate = DateTime.Now;
+            var eventos = await db.Eventos.Where(e => e.TipoDeEvento == (int)TipoDeEvento.PagamentoFornecedor && DbFunctions.TruncateTime(e.DataDeAviso) == currentDate.Date).ToListAsync();
+
+            if (eventos.Any())
+            {
+                var smtpClient = new SmtpClient
+                {
+                    Host = "smtp-mail.outlook.com", // SMTP
+                    Port = 587, // Porta
+                    EnableSsl = true,
+                    // login //
+                    Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "senha")
+                };
+
+                using (var message = new MailMessage("diegol.aquino@outlook.com", "diegol.aquino@gmail.com")
+                {
+                    Subject = "Lembrete de Pagamento",
+                    Body = "Esses são os fornecedores que você deve pagar: "
+                })
+                {
+                    int cont = 1;
+                    string m = "\r\n";
+
+                    foreach (Evento evento in eventos)
+                    {
+                        m += cont.ToString() + " " + evento.Aviso + "\r\n";
+                        cont++;
+                    }
+
+                    message.Body += m;
+
+                    await smtpClient.SendMailAsync(message);
+                }
+            }
+        }
+        #endregion
     }
 }

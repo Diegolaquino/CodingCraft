@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Collections;
 using CodingCraftoHOMod1Ex1EF.Models.Enums;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -43,8 +44,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Eventos.Add(evento);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Eventos.Add(evento);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -75,8 +81,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evento).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(evento).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             return View(evento);

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -49,17 +50,16 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ClienteId,Nome,Email")] Cliente cliente)
         {
-            //var verificaCliente = await db.Clientes.Where(c => c.Email == cliente.Email).SingleAsync();
-
-            //if(verificaCliente != null)
-            //{
-            //    return HttpNotFound("Já existe um cliente cadastrado com esse email.");
-            //}
-
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(cliente);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Clientes.Add(cliente);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+                    
                 return RedirectToAction("Index");
             }
 
@@ -90,8 +90,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(cliente).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             return View(cliente);

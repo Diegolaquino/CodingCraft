@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
@@ -21,6 +20,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Vendas
         public async Task<ActionResult> Index()
         {
+            var vendas = db.Vendas.Include(v => v.Cliente).Include(v => v.Itens);
             return View(await db.Vendas.ToListAsync());
         }
 
@@ -125,29 +125,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View(venda);
         }
 
-        // GET: Vendas/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Vendas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "VendaId,DataDaVenda,ValorDaVenda, Item")] Venda venda)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Vendas.Add(venda);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            return View(venda);
-        }
-
         // GET: Vendas/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
@@ -172,8 +149,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(venda).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(venda).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             return View(venda);

@@ -5,12 +5,12 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Cliente</h4>
+        <h4>Envio de Email com total consumido</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Cliente.ClienteId, "Escolha o Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("ClienteId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
             </div>
@@ -18,7 +18,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Mensagem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Mensagem, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
             </div>
@@ -37,6 +37,8 @@
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryMin")
+    @Scripts.Render("~/bundles/datatablesMin")
+    @Scripts.Render("~/bundles/datatablesCss")
 }
 

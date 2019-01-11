@@ -85,8 +85,12 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoria).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(categoria).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             return View(categoria);

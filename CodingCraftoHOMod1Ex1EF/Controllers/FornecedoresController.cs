@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using CodingCraftoHOMod1Ex1EF.Models;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -40,8 +41,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Fornecedores.Add(fornecedor);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Fornecedores.Add(fornecedor);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -72,8 +78,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(fornecedor).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(fornecedor).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             return View(fornecedor);

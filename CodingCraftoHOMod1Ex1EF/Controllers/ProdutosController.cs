@@ -6,6 +6,7 @@ using CodingCraftoHOMod1Ex1EF.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -14,17 +15,11 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produtos
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            
-            var produtoes = db.Produtos.ToList();
+            var produtoes = db.Produtos.Include(p => p.Categoria);
 
-            //if(!string.IsNullOrEmpty(produtoPesquisado))
-            //{
-            //    produtoes = produtoes.Where(p => p.Nome.Contains(produtoPesquisado));
-            //}
-
-            return View(produtoes);
+            return View(await produtoes.ToListAsync());
         }
 
         // GET: Produtos/Details/5
@@ -60,8 +55,12 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Produtos.Add(produto);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Produtos.Add(produto);
+                    await db.SaveChangesAsync();
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -92,8 +91,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produto).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(produto).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome", produto.CategoriaId);
