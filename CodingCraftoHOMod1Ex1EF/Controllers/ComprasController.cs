@@ -125,8 +125,13 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(compra).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(compra).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.FornecedorId = new SelectList(db.Fornecedores, "FornecedorId", "Nome", compra.FornecedorId);
