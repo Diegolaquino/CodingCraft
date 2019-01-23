@@ -15,7 +15,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         public ActionResult Index()
         {
             ViewData["Despesas"] = (from d in db.Compras select new CompraViewModel { Fornecedor = d.Fornecedor.Nome, Valor = d.Valor }).ToList();
-            ViewData["Receitas"] = (from r in db.Vendas select new VendaViewModel { Cliente  = r.Cliente.Nome, Valor = r.ValorDaVenda }).ToList();
+            ViewData["Receitas"] = (from r in db.Vendas select new VendaViewModel { Cliente  = r.User.UserName, Valor = r.ValorDaVenda }).ToList();
 
             return View();
         }

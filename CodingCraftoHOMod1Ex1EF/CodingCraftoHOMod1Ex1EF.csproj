@@ -224,7 +224,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarrinhoController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContabilidadesController.cs" />
     <Compile Include="Controllers\Controller.cs" />
@@ -243,7 +242,6 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Categoria.cs" />
-    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\CompraViewModel.cs" />
     <Compile Include="Models\Enums\TipoDeEvento.cs" />
@@ -606,16 +604,12 @@
     <Content Include="Views\FornecedoresProdutos\Delete.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Details.cshtml" />
     <Content Include="Views\FornecedoresProdutos\Index.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Clientes\Edit.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Carrinho\Carrinho.cshtml" />
     <Content Include="Views\Compras\Create.cshtml" />
     <Content Include="Views\Compras\Delete.cshtml" />
     <Content Include="Views\Compras\Details.cshtml" />
     <Content Include="Views\Compras\Edit.cshtml" />
     <Content Include="Views\Compras\Index.cshtml" />
-    <Content Include="Views\Vendas\Create.cshtml" />
     <Content Include="Views\Vendas\Delete.cshtml" />
     <Content Include="Views\Vendas\Details.cshtml" />
     <Content Include="Views\Vendas\Edit.cshtml" />

@@ -153,6 +153,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Name, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                //IdentityResult x = await UserManager.AddToRoleAsync(user.Id, "Cliente");
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

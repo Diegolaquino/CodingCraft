@@ -8,8 +8,8 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 {
     public class EnvioDeEmailModel
     {
-        public int ClienteId { get; set; }
-        public virtual Cliente Cliente { get; set; }
+        public int Id { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Mensagem { get; set; }
