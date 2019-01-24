@@ -17,17 +17,17 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Emails
         public ActionResult Index()
         {
-            ViewBag.ClienteId = new SelectList(db.Clientes, "ClienteId", "Nome");
+            ViewBag.ClienteId = new SelectList(db.Users, "Id", "UserName");
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> EnviarEmail([Bind(Include = "ClienteId, Mensagem")]EnvioDeEmailModel email)
+        public async Task<ActionResult> EnviarEmail([Bind(Include = "Id, Mensagem")]EnvioDeEmailModel email)
         {
-            Cliente cliente = await db.Clientes.FindAsync(email.ClienteId);
+            ApplicationUser user = db.Users.Find(email.Id);
 
-            var listaDeProdutosConsumidos = from c in db.Clientes
-                                            join v in db.Vendas on c.ClienteId equals v.ClienteId
+            var listaDeProdutosConsumidos = from c in db.Users
+                                            join v in db.Vendas on c.Id equals v.UserId
                                             join i in db.Itens on v.VendaId equals i.VendaId
                                             where v.DataDaVenda.Month == DateTime.Now.Month
                                             select new
@@ -46,7 +46,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                 Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "senha")
             };
 
-            using (var message = new MailMessage("diegol.aquino@outlook.com", cliente.Email)
+            using (var message = new MailMessage("diegol.aquino@outlook.com", user.Email)
             {
                 Subject = "Lembrete de Pagamento",
                 Body = "Olá, segue o total a lista das suas compras no mês: "

@@ -3,10 +3,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CodingCraftoHOMod1Ex1EF.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, CustomRole,
+    int, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 
@@ -17,7 +18,6 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<FornecedorProduto> FornecedoresProdutos { get; set; }
         public DbSet<Compra> Compras { get; set; }

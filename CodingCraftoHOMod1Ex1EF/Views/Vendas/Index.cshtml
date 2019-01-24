@@ -13,7 +13,7 @@
                 @Html.DisplayNameFor(model => model.ValorDaVenda)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClienteId)
+                @Html.DisplayNameFor(model => model.UserId)
             </th>
             <th></th>
         </tr>
@@ -30,7 +30,7 @@
                     @Html.DisplayFor(modelItem => item.ValorDaVenda)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                    @Html.DisplayFor(modelItem => item.User.UserName)
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.VendaId }) |
