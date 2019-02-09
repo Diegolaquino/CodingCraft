@@ -20,7 +20,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Vendas
         public async Task<ActionResult> Index()
         {
-            var vendas = db.Vendas.Include(v => v.Cliente).Include(v => v.Itens);
+            var vendas = db.Vendas.Include(v => v.User).Include(v => v.Itens);
             return View(await db.Vendas.ToListAsync());
         }
 
@@ -33,9 +33,9 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                 return HttpNotFound("Você deve preencher o email do cliente");
             }
 
-            var cliente = await db.Clientes.Where(c => c.Email.Contains(email.Trim())).SingleOrDefaultAsync();
+            var user = await db.Users.Where(c => c.Email.Contains(email.Trim())).SingleOrDefaultAsync();
 
-            if(cliente == null)
+            if(user == null)
             {
                 return HttpNotFound("Cliente Não cadastrado ou email incorreto!");
             }
@@ -44,8 +44,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             {
                 Venda venda = new Venda
                 {
-                    Cliente = cliente,
-                    ClienteId = cliente.ClienteId,
+                    User = user,
+                    UserId = user.Id,
                     DataDaVenda = DateTime.Now,
                     Itens = (List<Item>)Session["carrinho"]
                 };
