@@ -1,3 +1,5 @@
+using CodingCraftoHOMod1Ex1EF.Models;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity.Migrations;
 
 namespace CodingCraftoHOMod1Ex1EF.Migrations
