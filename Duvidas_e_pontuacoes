@@ -1,0 +1,17 @@
+Pontuação
+
+O envio de email deve ser configurado, pois tirei a minha senha.
+
+Duvidas
+
+1 - Não entendi muito bem como utilizar class fornecedorProduto. Gostaria de ver sua implementação.
+2 - Tentei implementar o identity, mas não consegui. Tive dificuldades em entender seu funcionamento. Se possível, peço
+que implemente o mesmo com dois níveis: admin e usuário comum. Eu queria fazer isso para implementar a identificação do usuário
+utilizando a sessão do mesmo.
+3 - Gostaria que você mencionasse outra forma de implementar um carrinho sem ser com sessão. 
+4 - Acredito que faça parte da correção, mas gostaria da opinião sobre como utilizo orientação a objetos. Não me sinto seguro em relação a mesma.
+ 
+5 - Sobre o design, ficou essa bosta mesmo. Mas estou fazendo outro curso para melhorar isso.
+6 - Tendo como base o código, gostaria que você mencionasse tudo de errado e me desse alguma sugestão de livro ou algo do tipo
+para melhorar.
+7 - Não consegui implementar a auditoria, mas por conta da não implementação do login do identity.
