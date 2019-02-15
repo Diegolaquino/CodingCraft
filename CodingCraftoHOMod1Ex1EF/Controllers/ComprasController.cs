@@ -85,6 +85,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                     var produto = await db.Produtos.FindAsync(compra.ProdutoId);
                     produto.Quantidade += compra.Quantidade;
+                    //sempre atualiza o preço de acordo com a última compra
+                    produto.Preco = (compra.Valor / compra.Quantidade) * (decimal)1.1;
                     db.Entry(produto).State = EntityState.Modified;
              
                     await db.SaveChangesAsync();
