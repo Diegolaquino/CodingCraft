@@ -20,35 +20,41 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
             //  to avoid creating duplicate seed data.
 
             context.Fornecedores.AddOrUpdate(f => f.Nome,
-                new Fornecedor { FornecedorId = 1, Nome = "Candy" },
-                new Fornecedor { FornecedorId = 1, Nome = "Didoci" },
-                new Fornecedor { FornecedorId = 1, Nome = "Doly" },
-                new Fornecedor { FornecedorId = 1, Nome = "Doces Marsil" },
-                new Fornecedor { FornecedorId = 1, Nome = "Manos Doces" },
-                new Fornecedor { FornecedorId = 1, Nome = "Doces Malu" },
-                new Fornecedor { FornecedorId = 1, Nome = "Bom Baiano" },
-                new Fornecedor { FornecedorId = 1, Nome = "Garoto Atacado" },
-                new Fornecedor { FornecedorId = 1, Nome = "Atacado de guloseimas" },
-                new Fornecedor { FornecedorId = 1, Nome = "Nestlé" }
+                new Fornecedor { Nome = "Candy" },
+                new Fornecedor { Nome = "Didoci" },
+                new Fornecedor { Nome = "Doly" },
+                new Fornecedor { Nome = "Doces Marsil" },
+                new Fornecedor { Nome = "Manos Doces" },
+                new Fornecedor { Nome = "Doces Malu" },
+                new Fornecedor { Nome = "Bom Baiano" },
+                new Fornecedor { Nome = "Garoto Atacado" },
+                new Fornecedor { Nome = "Atacado de guloseimas" },
+                new Fornecedor { Nome = "Nestlé" }
                 );
+
+            context.SaveChanges();
 
             context.Categorias.AddOrUpdate(c => c.Nome,
-                new Categoria { CategoriaId = 1, Nome = "Chocolates" },
-                new Categoria { CategoriaId = 2, Nome = "Sucos" },
-                new Categoria { CategoriaId = 3, Nome = "Biscoitos" },
-                new Categoria { CategoriaId = 4, Nome = "Açucarados" },
-                new Categoria { CategoriaId = 5, Nome = "Bolos" },
-                new Categoria { CategoriaId = 6, Nome = "Caseiros" }
+                new Categoria { Nome = "Chocolates" },
+                new Categoria { Nome = "Sucos" },
+                new Categoria { Nome = "Biscoitos" },
+                new Categoria { Nome = "Açucarados" },
+                new Categoria { Nome = "Bolos" },
+                new Categoria { Nome = "Caseiros" }
                 );
 
+            context.SaveChanges();
+
             context.Produtos.AddOrUpdate(p => p.Nome,
-                new Produto { Nome = "KitKat", CategoriaId = 1, Preco = 0, Cardinalidade = 3, ProdutoId = 1, Quantidade = 0 },
-                new Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 0, Cardinalidade = 3, ProdutoId = 2, Quantidade = 0 },
-                new Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 0, Cardinalidade = 4, ProdutoId = 3, Quantidade = 0 },
-                new Produto { Nome = "Jujubas", CategoriaId = 4, Preco = 0, Cardinalidade = 4, ProdutoId = 4, Quantidade = 0 },
-                new Produto { Nome = "Bolo de chocolate", CategoriaId = 0, Preco = 5, Cardinalidade = 4, ProdutoId = 5, Quantidade = 0 },
-                new Produto { Nome = "Maça do Amor", CategoriaId = 6, Preco = 0, Cardinalidade = 4, ProdutoId = 6, Quantidade = 0 }
+                new Produto { Nome = "KitKat", CategoriaId = 1, Preco = 0, Cardinalidade = 3, Quantidade = 0 },
+                new Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 0, Cardinalidade = 3, Quantidade = 0 },
+                new Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 0, Cardinalidade = 4, Quantidade = 0 },
+                new Produto { Nome = "Jujubas", CategoriaId = 4, Preco = 0, Cardinalidade = 4, Quantidade = 0 },
+                new Produto { Nome = "Bolo de chocolate", CategoriaId = 0, Preco = 5, Cardinalidade = 4, Quantidade = 0 },
+                new Produto { Nome = "Maça do Amor", CategoriaId = 6, Preco = 0, Cardinalidade = 4, Quantidade = 0 }
                 );
+
+            context.SaveChanges();
 
             context.FornecedoresProdutos.AddOrUpdate(
                 new FornecedorProduto { FornecedorProdutoId = 1, FornecedorId = 1,ProdutoId = 1 },
