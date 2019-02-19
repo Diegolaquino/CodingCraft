@@ -92,8 +92,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             }
         }
 
-        public ActionResult ListarVendas() => View();
-
         // GET: Vendas/Details/5
         public async Task<ActionResult> Details(int? id)
         {
