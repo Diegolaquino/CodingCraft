@@ -12,7 +12,7 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -52,16 +52,6 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
                 new Produto { Nome = "Jujubas", CategoriaId = 4, Preco = 0, Cardinalidade = 4, Quantidade = 0 },
                 new Produto { Nome = "Bolo de chocolate", CategoriaId = 0, Preco = 5, Cardinalidade = 4, Quantidade = 0 },
                 new Produto { Nome = "Maça do Amor", CategoriaId = 6, Preco = 0, Cardinalidade = 4, Quantidade = 0 }
-                );
-
-            context.SaveChanges();
-
-            context.FornecedoresProdutos.AddOrUpdate(
-                new FornecedorProduto { FornecedorProdutoId = 1, FornecedorId = 1,ProdutoId = 1 },
-                new FornecedorProduto { FornecedorProdutoId = 2, FornecedorId = 2, ProdutoId = 2 },
-                new FornecedorProduto { FornecedorProdutoId = 3, FornecedorId = 3, ProdutoId = 3 },
-                new FornecedorProduto { FornecedorProdutoId = 4, FornecedorId = 4, ProdutoId = 4 },
-                new FornecedorProduto { FornecedorProdutoId = 5, FornecedorId = 5, ProdutoId = 5 }
                 );
 
             context.SaveChanges();

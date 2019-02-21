@@ -83,6 +83,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                     compra.DataDaCompra = DateTime.Now;
                     db.Compras.Add(compra);
 
+                    db.FornecedoresProdutos.Add(new FornecedorProduto() { FornecedorId = compra.FornecedorId, ProdutoId = compra.ProdutoId });
+
                     var produto = await db.Produtos.FindAsync(compra.ProdutoId);
                     produto.Quantidade += compra.Quantidade;
                     //sempre atualiza o preço de acordo com a última compra
@@ -96,7 +98,6 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                 return RedirectToAction("Index");
             }
-
 
             ViewBag.FornecedorId = new SelectList(db.Fornecedores, "FornecedorId", "Nome", compra.FornecedorId);
             return View(compra);
