@@ -56,7 +56,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             if(id == null)
             {
-                return HttpNotFound("Erro com a categoria.");
+                return Json(db.Produtos.ToList(), JsonRequestBehavior.AllowGet);
             }
            
             var lista = await GetProdutosPorIdCategoriaAsync((int)id);
