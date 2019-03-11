@@ -39,6 +39,9 @@ namespace CodingCraftoHOMod1Ex1EF
 
             bundles.Add(new StyleBundle("~/bundles/popper").Include(
                      "~/Scripts/popper.js"));
+
+            bundles.Add(new StyleBundle("~/Content/site").Include(
+                     "~/Content/Site.css"));
         }
     }
 }
