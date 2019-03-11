@@ -10,6 +10,7 @@ using CodingCraftoHOMod1Ex1EF.Models;
 using System.Transactions;
 using Hangfire;
 using System.Net.Mail;
+using CodingCraftoHOMod1Ex1EF.Helper;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -25,7 +26,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         }
 
         public ActionResult EmailCliente() => View();
-        
+
         public async Task<ActionResult> FinalizarPedidoAsync(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -35,7 +36,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             var user = await db.Users.Where(c => c.Email.Contains(email.Trim())).SingleOrDefaultAsync();
 
-            if(user == null)
+            if (user == null)
             {
                 return HttpNotFound("Cliente Não cadastrado ou email incorreto!");
             }
@@ -54,10 +55,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
                 await db.SaveChangesAsync();
 
-                foreach(var p in venda.Itens)
+                foreach (var p in venda.Itens)
                 {
                     var produtoQueSeraAtualizado = await db.Produtos.FindAsync(p.CodigoProduto);
-                    if(produtoQueSeraAtualizado.Quantidade < p.Quantidade)
+                    if (produtoQueSeraAtualizado.Quantidade < p.Quantidade)
                     {
                         return HttpNotFound("Não há quantidade suficiente - " + produtoQueSeraAtualizado.Nome.ToString() + "- quantidade atual " + produtoQueSeraAtualizado.Quantidade.ToString());
                     }
@@ -78,37 +79,18 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         public async Task ConfereQuantidadeProdutosAsync()
         {
             var confereQuantidade = await db.Produtos.Where(p => p.Quantidade < 10).ToListAsync();
+            string body = "Os seguintes produtos estão com estoque baixo: ";
 
-            if(confereQuantidade.Any())
-            { 
-                var smtpClient = new SmtpClient
+            if (confereQuantidade.Any())
+            {
+                foreach (Produto p in confereQuantidade)
                 {
-                    Host = "smtp-mail.outlook.com", // SMTP
-                    Port = 587, // Porta
-                    EnableSsl = true,
-                    // login //
-                    Credentials = new NetworkCredential("diegol.aquino@outlook.com", "senha")
-                };
-
-                using (var message = new MailMessage("diegol.aquino@outlook.com", "diegol.aquino@gmail.com")
-                {
-                    Subject = "Lembrete de Compra de Produtos",
-                    Body = "Os seguintes produtos estão com estoque baixo: "
-                })
-                {
-                    foreach(Produto p in confereQuantidade)
-                    {
-                        message.Body += p.Nome.ToString() + ", ";
-                    }
-
-                    await smtpClient.SendMailAsync(message);
+                    body += p.Nome.ToString() + ", ";
                 }
+
+                await EmailHelper.EnviarEmailAsync("diegol.aquino@gmail.com", "Lembrete de Compra de Produtos", body);
             }
-
-            
         }
-
-        public ActionResult ListarVendas() => View();
 
         // GET: Vendas/Details/5
         public async Task<ActionResult> Details(int? id)

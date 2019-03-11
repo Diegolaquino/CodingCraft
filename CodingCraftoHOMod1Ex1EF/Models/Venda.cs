@@ -12,10 +12,13 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Key]
         public int VendaId { get; set; }
 
+        [Display(Name = "Data de Venda")]
         public DateTime DataDaVenda { get; set; }
 
+        [Display(Name = "Valor de Venda")]
         public decimal ValorDaVenda { get; set; }
 
+        [Display(Name = "ID Usuário")]
         public int UserId { get; set; }
 
         public virtual ICollection<Item> Itens { get; set; }

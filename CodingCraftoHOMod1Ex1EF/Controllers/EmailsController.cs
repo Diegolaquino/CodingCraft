@@ -1,3 +1,4 @@
+using CodingCraftoHOMod1Ex1EF.Helper;
 using CodingCraftoHOMod1Ex1EF.Models;
 using Postal;
 using System;
@@ -17,7 +18,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // GET: Emails
         public ActionResult Index()
         {
-            ViewBag.ClienteId = new SelectList(db.Users, "Id", "UserName");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "UserName");
             return View();
         }
 
@@ -37,34 +38,20 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                                                 quantidade = i.Quantidade,
                                             };
 
-            var smtpClient = new SmtpClient
-            {
-                Host = "smtp-mail.outlook.com", // SMTP
-                Port = 587, // Porta
-                EnableSsl = true,
-                // login //
-                Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "senha")
-            };
 
-            using (var message = new MailMessage("diegol.aquino@outlook.com", user.Email)
-            {
-                Subject = "Lembrete de Pagamento",
-                Body = "Olá, segue o total a lista das suas compras no mês: "
-            })
-            {
-                int cont = 1;
-                string listaProdutosEmail = "\r\n";
+            string mensagemEmail = "";
+            int cont = 1;
+            string listaProdutosEmail = "\r\n";
 
-                foreach(var item in listaDeProdutosConsumidos)
-                {
-                    listaProdutosEmail += cont.ToString() + "º - " + item.nome + " - Quantidade: " + item.quantidade.ToString() + " - Preço: R$ " + item.preco.ToString() + "\r\n";
-                    cont++;
-                }
-                
-                message.Body += listaProdutosEmail + "\r\n" + "Total no mês: R$ " + listaDeProdutosConsumidos.Sum(l => l.preco).ToString() + "\r\n" + email.Mensagem;
-
-                await smtpClient.SendMailAsync(message);
+            foreach (var item in listaDeProdutosConsumidos)
+            {
+                listaProdutosEmail += cont + "º - " + item.nome + " - Quantidade: " + item.quantidade.ToString() + " - Preço: R$ " + item.preco + "\r\n";
+                cont++;
             }
+
+            mensagemEmail += listaProdutosEmail + "\r\n" + "Total no mês: R$ " + listaDeProdutosConsumidos.Sum(l => l.preco).ToString() + "\r\n" + email.Mensagem;
+
+            await EmailHelper.EnviarEmailAsync(user.Email, "Lembrete de Pagamento", mensagemEmail);
 
             return RedirectToAction("Sent");
         }

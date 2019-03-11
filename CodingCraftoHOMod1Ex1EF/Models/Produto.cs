@@ -32,6 +32,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public virtual Categoria Categoria { get; set; }
 
+        
         public virtual ICollection<FornecedorProduto> ProdutoFornecedores { get; set; }
     }
 }

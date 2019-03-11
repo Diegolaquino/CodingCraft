@@ -1,13 +1,12 @@
-﻿using CodingCraftoHOMod1Ex1EF.Models;
+﻿using CodingCraftoHOMod1Ex1EF.Helper;
+using CodingCraftoHOMod1Ex1EF.Models;
 using CodingCraftoHOMod1Ex1EF.Models.Enums;
 using Hangfire;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
@@ -115,34 +114,19 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
             if (eventos.Any())
             {
-                var smtpClient = new SmtpClient
+                string mensagemEmail = "";
+                int cont = 1;
+                string m = "\r\n";
+
+                foreach (Evento evento in eventos)
                 {
-                    Host = "smtp-mail.outlook.com", // SMTP
-                    Port = 587, // Porta
-                    EnableSsl = true,
-                    // login //
-                    Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "senha")
-                };
-
-                using (var message = new MailMessage("diegol.aquino@outlook.com", "diegol.aquino@gmail.com")
-                {
-                    Subject = "Lembrete de Pagamento",
-                    Body = "Esses são os fornecedores que você deve pagar: "
-                })
-                {
-                    int cont = 1;
-                    string m = "\r\n";
-
-                    foreach (Evento evento in eventos)
-                    {
-                        m += cont.ToString() + " " + evento.Aviso + "\r\n";
-                        cont++;
-                    }
-
-                    message.Body += m;
-
-                    await smtpClient.SendMailAsync(message);
+                    m += cont + " " + evento.Aviso + "\r\n";
+                    cont++;
                 }
+
+                mensagemEmail += m;
+
+                await EmailHelper.EnviarEmailAsync("diegol.aquino@gmail.com", "Lembrete de Pagamento", mensagemEmail);
             }
         }
         #endregion
