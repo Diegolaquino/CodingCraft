@@ -1,0 +1,26 @@
+﻿.produto {
+    background-color: aliceblue;
+    color: black;
+    border: 1px solid;
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    float: left;
+    padding-top: 105px;
+    padding-left: 85px;
+}
+
+produtointerno{
+    width: 100%;
+}
+.botaoComprar {
+    border: 2px solid red;
+}
+
+.titulocarrinho {
+    margin-top: 20px;
+    font-family: 'Indie Flower', cursive;
+    color: red;
+    text-align: center;
+}
+    

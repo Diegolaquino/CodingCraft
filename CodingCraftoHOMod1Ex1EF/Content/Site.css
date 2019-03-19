@@ -33,3 +33,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.cart{
+    margin-right: 40px;
+}
