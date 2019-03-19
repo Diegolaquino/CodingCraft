@@ -1,65 +1,33 @@
 ﻿
 @model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.ProdutoViewModel>
 
+@section css {
+    <link rel="stylesheet" href="~/Content/carrinho.css" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+}
+
 @{
     ViewBag.Title = "Produtos";
 }
 
-<h2>Carrinho</h2>
+<h2 class="titulocarrinho">Os melhores doces</h2>
 
-<div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="produto">
+            <div class="col-sm produtointerno">
+                <div>@Html.DisplayFor(modelItem => item.Nome)</div>
+                <div> @Html.DisplayFor(modelItem => item.Preco)</div>
+                @Html.ActionLink("Comprar", "Comprar", new { id = item.ProdutoId }, new { @class = "botaoComprar btn btn-warning" })
+            </div>
+        </div>
+    }
 
-<table class="table" id="vitrineProdutos">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cardinalidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Preco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cardinalidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantidade)
-                </td>
-                <td>
-                    @Html.ActionLink("Comprar", "Comprar", new { id = item.ProdutoId }) |
-                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+</div>
 
 @Scripts.Render("~/bundles/jqueryMin")
 @Scripts.Render("~/bundles/datatablesMin")
 @Scripts.Render("~/bundles/datatablesCss")
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#vitrineProdutos').DataTable();
-    });
-</script>
 
