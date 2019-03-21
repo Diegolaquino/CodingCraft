@@ -30,4 +30,13 @@ produtointerno {
     color: red;
     text-align: center;
 }
-    
+
+.minhaClass {
+    text-decoration: none;
+    color: #fff;
+}
+.minhaClass:hover {
+    text-decoration:inherit;
+    color: #fff;
+}
+
