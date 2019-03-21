@@ -1,5 +1,5 @@
 ﻿.produto {
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
     color: black;
     border: 1px solid;
     width: 300px;
@@ -8,9 +8,16 @@
     float: left;
     padding-top: 105px;
     padding-left: 85px;
+    background-image: url("img/balas.jpg");
 }
 
-produtointerno{
+.texto-produto{
+    color:#fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+produtointerno {
     width: 100%;
 }
 .botaoComprar {

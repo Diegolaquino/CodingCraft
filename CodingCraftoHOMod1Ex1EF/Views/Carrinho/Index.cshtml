@@ -17,13 +17,12 @@
     {
         <div class="produto">
             <div class="col-sm produtointerno">
-                <div>@Html.DisplayFor(modelItem => item.Nome)</div>
-                <div> @Html.DisplayFor(modelItem => item.Preco)</div>
+                <div class="texto-produto">@Html.DisplayFor(modelItem => item.Nome)</div>
+                <div class="texto-produto"> @Html.DisplayFor(modelItem => item.Preco)</div>
                 @Html.ActionLink("Comprar", "Comprar", new { id = item.ProdutoId }, new { @class = "botaoComprar btn btn-warning" })
             </div>
         </div>
     }
-
 
 </div>
 
