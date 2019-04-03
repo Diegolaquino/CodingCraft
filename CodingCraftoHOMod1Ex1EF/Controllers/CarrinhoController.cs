@@ -27,8 +27,11 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                                         Nome = p.Nome,
                                         Quantidade = p.Quantidade,
                                         Cardinalidade = p.Cardinalidade,
-                                        Preco = p.Preco
+                                        Preco = p.Preco,
+                                        ImagePath = p.ImagePath
                                     };
+
+
 
             //Verifica se há algum pagamento agendado para o dia
             BackgroundJob.Enqueue(() => LembretePagamentoFornecedor());

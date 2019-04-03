@@ -15,7 +15,7 @@
 <div class="container">
     @foreach (var item in Model)
     {
-        <div class="produto">
+        <div class="produto" style="background-image: url(@item.ImagePath.ToString()); background-size: 280px; background-repeat: no-repeat;">
             <div class="col-sm produtointerno">
                 <div class="texto-produto">@Html.DisplayFor(modelItem => item.Nome)</div>
                 <div class="texto-produto"> @Html.DisplayFor(modelItem => item.Preco)</div>

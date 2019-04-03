@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Transactions;
+using System.IO;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -49,9 +50,30 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade")] Produto produto)
+        public async Task<ActionResult> Create(Produto produto)
         {
             produto.Quantidade = 0;
+
+            if(!string.IsNullOrEmpty(produto.ImageFile.FileName))
+            {
+                try
+                {
+                    string fileName = Path.GetFileName(produto.ImageFile.FileName);
+                    produto.ImagePath = "/Img/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Img/"), fileName);
+                    produto.ImageFile.SaveAs(fileName);
+                    //produto.ImagePath = fileName;
+                }
+                catch (IOException)
+                {
+                    throw new IOException("Erro ao tentar salvar a imagem do produto.");
+                }
+                
+            }
+            else
+            {
+                produto.ImagePath = "nothing";
+            }
 
             if (ModelState.IsValid)
             {
@@ -61,6 +83,8 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                     await db.SaveChangesAsync();
                     scope.Complete();
                 }
+
+                ModelState.Clear();
                 return RedirectToAction("Index");
             }
 

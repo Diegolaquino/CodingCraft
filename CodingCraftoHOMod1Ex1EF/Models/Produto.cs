@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace CodingCraftoHOMod1Ex1EF.Models
 {
@@ -11,6 +12,13 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Display(Name = "Produto")]
         [Key]
         public int ProdutoId { get; set; }
+
+        [Display(Name = "Foto do Produto")]
+        public string ImagePath { get; set; }
+
+        [DataType(DataType.Upload)]
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
         [Required]
         [StringLength(100)]
