@@ -34,7 +34,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
                 return HttpNotFound("Você deve preencher o email do cliente");
             }
 
-            var user = await db.Users.Where(c => c.Email.Contains(email.Trim())).SingleOrDefaultAsync();
+            var user = await db.Users.SingleOrDefaultAsync(c => c.Email.Contains(email.Trim()));
 
             if (user == null)
             {
