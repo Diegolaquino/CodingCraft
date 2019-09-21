@@ -3,7 +3,6 @@
 
 @section css {
     <link rel="stylesheet" href="~/Content/carrinho.css" />
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 }
 
 @{
@@ -11,6 +10,7 @@
 }
 
 <h2 class="titulocarrinho">Os melhores doces</h2>
+@Html.ActionLink("Teste", "Teste")
 
 <div class="container">
     @foreach (var item in Model)

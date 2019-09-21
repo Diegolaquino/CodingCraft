@@ -1,0 +1,27 @@
+header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #abe63c;
+    padding: 15px 0;
+    z-index: 10;
+    font-family: 'Indie Flower';
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 25px;
+    color: rgb(36, 39, 41);
+
+}
+.header_menu{
+    text-align: center;
+}
+.header_menu ul li{
+    display: inline;
+    padding: 10px;
+    cursor: pointer;
+}
+.header_menu ul li:hover{
+    color: aliceblue;
+    border-bottom: 3px solid aliceblue;
+}

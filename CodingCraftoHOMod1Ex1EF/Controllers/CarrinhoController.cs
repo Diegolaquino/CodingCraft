@@ -33,11 +33,19 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             //Verifica se há algum pagamento agendado para o dia
             BackgroundJob.Enqueue(() => LembretePagamentoFornecedor());
 
-            return View(produtosViewModel.ToList());
+            return Json(produtosViewModel.ToList(), JsonRequestBehavior.AllowGet);
         }
         #endregion
 
         public ActionResult Carrinho() => View();
+
+        [HttpGet]
+        public JsonResult Teste()
+        {
+            var listaNome = new List<String>() {"Diego", "Lima", "Aquino"};
+
+            return Json(listaNome, JsonRequestBehavior.AllowGet);
+        }
 
         #region Método Comprar
         public async Task<ActionResult> Comprar(int id)

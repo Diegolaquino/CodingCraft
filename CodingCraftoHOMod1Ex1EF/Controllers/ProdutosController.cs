@@ -22,6 +22,15 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return View(await produtoes.ToListAsync());
         }
 
+        [HttpGet]
+        [Route("{controller}/produtos")]
+    public JsonResult Produtos()
+        {
+            var produtoes = db.Produtos.Include(p => p.Categoria);
+
+            return Json(produtoes.ToList());
+        }
+
         // GET: Produtos/Details/5
         public async Task<ActionResult> Details(int? id)
         {

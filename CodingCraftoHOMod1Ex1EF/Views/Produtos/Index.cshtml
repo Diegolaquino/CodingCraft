@@ -3,13 +3,19 @@
 @using StackExchange.Profiling.Mvc
 
 
+@section css {
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+}
+
 @{
     ViewBag.Title = "Produtos";
 }
 
-<h2>Index</h2>
-
+<h2 class="tituloPagina">
+    Nossos Produtos
+</h2>
 <p>
+    <i class="fas fa-plus"></i>
     @Html.ActionLink("Cadastrar Produto", "Create")
 </p>
 

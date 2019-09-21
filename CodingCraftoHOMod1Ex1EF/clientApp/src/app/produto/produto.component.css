@@ -1,0 +1,20 @@
+#produtos{
+    margin-top: 140px;
+}
+#produtos h1{
+    font-family: "Indie Flower";
+    font-size: 28px;
+    text-align: center;
+}
+table{
+    width: 70%;
+    border: 1px solid #abe63c;
+    
+}
+thead{
+    background: #abe63c;
+}
+
+tbody{
+    color: #567223;
+}
