@@ -13,7 +13,7 @@ namespace CodingCraftoHOMod1Ex1EF.Helper
                 Port = 587, // Porta
                 EnableSsl = true,
                 // login //
-                Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "280791d@")
+                Credentials = new System.Net.NetworkCredential("diegol.aquino@outlook.com", "******")
             };
 
             using (MailMessage message = new MailMessage("diegol.aquino@outlook.com", email)

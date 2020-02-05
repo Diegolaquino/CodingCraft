@@ -24,7 +24,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
         [HttpGet]
         [Route("{controller}/produtos")]
-    public JsonResult Produtos()
+        public JsonResult Produtos()
         {
             var produtoes = db.Produtos.Include(p => p.Categoria);
 

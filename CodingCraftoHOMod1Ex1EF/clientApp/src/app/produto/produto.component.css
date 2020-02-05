@@ -9,10 +9,17 @@
 table{
     width: 70%;
     border: 1px solid #abe63c;
+    table-layout: fixed;
+    min-width: 620px;
     
 }
 thead{
     background: #abe63c;
+    font-family: "Indie Flower";
+}
+
+thead tr th{
+    text-align: center;
 }
 
 tbody{
