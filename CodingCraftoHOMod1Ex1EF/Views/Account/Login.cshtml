@@ -5,13 +5,16 @@
 }
 
 <style>
+    .login-container{
+        margin-top: 50px;
+    }
     #loginForm {
         min-width: 300px;
         height: 400px;
         background-color: #ffc107;
         border: 1px solid black;
         border-radius: 3px;
-        margin: 0 auto; 
+        margin: 0 auto;
         padding: 10px;
     }
     #loginForm h4{
@@ -19,7 +22,7 @@
     }
 </style>
 
-<div class="row">
+<div class="row login-container">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -56,7 +59,7 @@
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Register as a new user", "Register")
+                    @Html.ActionLink("Criar um conta", "Register")
                 </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
@@ -66,9 +69,9 @@
         </section>
     </div>
     <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+        <div style="background-color: black; height: 400px; border-radius: 3px;">
+            
+        </div>
     </div>
 </div>
 

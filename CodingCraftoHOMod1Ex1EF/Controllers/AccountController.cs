@@ -78,11 +78,11 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             returnUrl = returnUrl ?? "~/Carrinho/Index";
 
-            var userName = (from un in db.Users
+            var user = (from un in db.Users
                             where un.Email == model.Email
-                            select un.UserName).First();
+                            select un).First();
 
-            var result = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(user.Name, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:

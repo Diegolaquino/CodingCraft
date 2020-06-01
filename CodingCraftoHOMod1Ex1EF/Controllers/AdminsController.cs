@@ -57,8 +57,9 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
 
         public ActionResult Usuarios()
         {
+            var usuarios = db.Users.ToList();
 
-            return View();
+            return View(usuarios);
         }
     }
 }
