@@ -9,7 +9,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/reset.css") />
     <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/Site.css") />
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     @RenderSection("css", required: false)
 
     @Styles.Render("~/Content/css")
@@ -30,73 +30,6 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fornecedores
-                        </a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Fornecedores/Create">Cadastrar Fornecedor</a>
-                            <a class="dropdown-item" href="~/Fornecedores/Index">Visualizar Fornecedores</a>
-                        </div>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categoria
-                        </a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Categorias/Create">Cadastrar Categoria</a>
-                            <a class="dropdown-item" href="~/Categorias/Index">Visualizar Categorias</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Produtos
-                        </a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Produtos/Create">Cadastrar Produto</a>
-                            <a class="dropdown-item" href="~/Produtos/Index">Visualizar Produtos</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fornecedor do Produto
-                        </a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/FornecedoresProdutos/Create">Cadastrar FornecedorProduto</a>
-                            <a class="dropdown-item" href="~/FornecedoresProdutos/Index">Visualizar Fornecedores</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Compras/Create">Inserir Compra</a>
-                            <a class="dropdown-item" href="~/Compras/Index">Visualizar Compras</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caixa</a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Contabilidades/Index">Visualizar</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Lembretes
-                        </a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Emails/Index">Emails de Cobrança</a>
-                            <a class="dropdown-item" href="~/Eventos/Index">Cadastro de lembretes</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendas</a>
-                        <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="~/Vendas/Index">Visualizar Vendas</a>
-                        </div>
-                    </li>
                     <li class="nav-item">
                         <form action="~/account/logoff" method="post">
                             @Html.AntiForgeryToken()
@@ -128,10 +61,6 @@
         
 
     </nav>
-
-    <div>
-        Aqui você está autenticado como @User.Identity.Name
-    </div>
 
     <div class="container body-content finalbody">
         @RenderBody()
