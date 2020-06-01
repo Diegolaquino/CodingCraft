@@ -33,7 +33,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             //Verifica se há algum pagamento agendado para o dia
             BackgroundJob.Enqueue(() => LembretePagamentoFornecedor());
 
-            return Json(produtosViewModel.ToList(), JsonRequestBehavior.AllowGet);
+            return View(produtosViewModel.ToList());
         }
         #endregion
 

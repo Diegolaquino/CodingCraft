@@ -1,42 +1,41 @@
-﻿.produto {
-    /*background-color: aliceblue;*/
-    color: black;
-    border: 1px solid;
-    width: 300px;
-    height: 200px;
-    margin: 20px;
-    float: left;
-    padding-top: 105px;
-    padding-left: 85px;
-    background-image: url("img/balas.jpg");
-}
-
-.texto-produto{
-    color:#fff;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-produtointerno {
+﻿#slide img {
     width: 100%;
-}
-.botaoComprar {
-    border: 2px solid red;
+    height: 300px;
 }
 
-.titulocarrinho {
-    margin-top: 20px;
-    font-family: 'Indie Flower', cursive;
-    color: red;
+.index-produtos {
+    width: 100%;
+    background-color: darkgray;
+}
+
+.item-produto {
+    width: 250px;
+    height: 350px;
+    background-color: white;
+    padding: 15px;
+    position: relative;
     text-align: center;
+    margin: 12px;
+    float: left;
+    border: 1px solid black;
 }
 
-.minhaClass {
-    text-decoration: none;
-    color: #fff;
-}
-.minhaClass:hover {
-    text-decoration:inherit;
-    color: #fff;
+    .item-produto img {
+        width: 180px;
+        display: block;
+        margin: auto;
+    }
+
+.btn-comprar {
+    margin: auto;
+    display: block;
 }
 
+.nome-produto {
+    font-size: 14px;
+}
+
+.preco {
+    font-weight: bold;
+    font-size: 20px;
+}
