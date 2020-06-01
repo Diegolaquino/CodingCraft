@@ -54,5 +54,11 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             return View();
         }
+
+        public ActionResult Usuarios()
+        {
+
+            return View();
+        }
     }
 }

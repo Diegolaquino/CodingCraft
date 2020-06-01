@@ -41,7 +41,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Opções:</h6>
                     <a class="collapse-item" href="buttons.html">Criar Usuario</a>
-                    <a class="collapse-item" href="cards.html">Listar Usuarios</a>
+                    @Html.ActionLink("Listar Usuarios", "Usuarios", "Admins", null, new { @class = "collapse-item" })
                 </div>
             </div>
         </li>
@@ -154,22 +154,7 @@
         <!-- Main Content -->
         <div id="content">
 
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <!-- Topbar Navbar -->
-                <!-- Nav Item - Messages -->
-
-                <div class="topbar-divider d-none d-sm-block"></div>
-
-                </ul>
-
-            </nav>
+           
             <!-- End of Topbar -->
             <!-- Begin Page Content -->
             <div class="container-fluid">
