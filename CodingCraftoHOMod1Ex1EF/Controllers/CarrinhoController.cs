@@ -37,6 +37,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         }
         #endregion
 
+        [Authorize]
         public ActionResult Carrinho() => View();
 
         [HttpGet]

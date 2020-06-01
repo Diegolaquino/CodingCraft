@@ -158,7 +158,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Name, Email = model.Email };
+                var user = new ApplicationUser { Name = model.Name, UserName = model.Name, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 //IdentityResult x = await UserManager.AddToRoleAsync(user.Id, "Cliente");
                 if (result.Succeeded)
@@ -399,7 +399,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Register", "Account");
+            return RedirectToAction("Carrinho", "Carrinho");
         }
 
         //

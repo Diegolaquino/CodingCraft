@@ -238,6 +238,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\EmailHelper.cs" />
+    <Compile Include="Migrations\202006011718230_Mudaca_nom-identiy.cs" />
+    <Compile Include="Migrations\202006011718230_Mudaca_nom-identiy.Designer.cs">
+      <DependentUpon>202006011718230_Mudaca_nom-identiy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -245,6 +249,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\CompraViewModel.cs" />
+    <Compile Include="Models\Enums\EAppUserRoles.cs" />
     <Compile Include="Models\Enums\TipoDeEvento.cs" />
     <Compile Include="Models\EnvioDeEmailModel.cs" />
     <Compile Include="Models\Evento.cs" />
@@ -650,6 +655,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006011718230_Mudaca_nom-identiy.resx">
+      <DependentUpon>202006011718230_Mudaca_nom-identiy.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
