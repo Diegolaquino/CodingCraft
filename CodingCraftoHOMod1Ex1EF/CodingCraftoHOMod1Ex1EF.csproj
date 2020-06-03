@@ -545,6 +545,10 @@
     <Content Include="Scripts\demo\chart-bar-demo.js" />
     <Content Include="Scripts\demo\chart-pie-demo.js" />
     <Content Include="Scripts\demo\datatables-demo.js" />
+    <Content Include="Scripts\demo\vendor\Chart.bundle.js" />
+    <Content Include="Scripts\demo\vendor\Chart.bundle.min.js" />
+    <Content Include="Scripts\demo\vendor\Chart.js" />
+    <Content Include="Scripts\demo\vendor\Chart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />

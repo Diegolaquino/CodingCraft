@@ -13,8 +13,10 @@ namespace CodingCraftoHOMod1Ex1EF
                        "~/Scripts/demo/datatables-demo.js")
                );
 
-            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
-                        "~/Scripts/demo/chart-area-demo.js")
+            bundles.Add(new ScriptBundle("~/bundles/chart")
+                        .Include("~/Scripts/demo/vendor/Chart.js")
+                        .Include("~/Scripts/demo/vendor/Chart.bundle.js")
+                        .Include("~/Scripts/demo/chart-area-demo.js")
                         .Include("~/Scripts/demo/chart-bar-demo.js")
                         .Include("~/Scripts/demo/chart-pie-demo.js")
                 );
