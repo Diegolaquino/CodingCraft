@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CodingCraftoHOMod1Ex1EF.Models;
+using CodingCraftoHOMod1Ex1EF.Models.Enums;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -86,7 +87,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    if(user.Roles.FirstOrDefault().RoleId == (int)EAppUserRoles.Administrators)
+                        return RedirectToAction("Index", "Admins");
+                    else
+                        return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
