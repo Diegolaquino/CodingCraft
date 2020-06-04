@@ -27,7 +27,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal jumbotron" style="margin-top: 50px;">
         <h4>Compra</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -71,23 +71,12 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cadastrar Compra" class="btn btn-default" />
+                <input type="submit" value="Cadastrar Compra" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Voltar", "Index")
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-secondary" })
 </div>
-
-
-
-@*<script>
-    var ref = $('#button-obs');
-    var popup = $('#popup-obs').hide();
-
-    ref.click(function () {
-        popup.show();
-    });
-</script>*@

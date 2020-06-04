@@ -59,7 +59,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade")] Produto produto)
+        public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade, TipoFoto")] Produto produto)
         {
             produto.Quantidade = 0;
             produto.URLFoto = $"~/Content/img/{Enum.GetName(typeof(ETipoFotoProduto), produto.TipoFoto)}.jpg";

@@ -650,10 +650,6 @@
     <Content Include="Views\Categorias\Create.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Create.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Delete.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Details.cshtml" />
-    <Content Include="Views\FornecedoresProdutos\Index.cshtml" />
     <Content Include="Views\Carrinho\Carrinho.cshtml" />
     <Content Include="Views\Compras\Create.cshtml" />
     <Content Include="Views\Compras\Delete.cshtml" />
