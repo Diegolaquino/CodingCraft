@@ -40,3 +40,8 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.button-remove-style{
+    text-decoration: none;
+    color: white;
+}

@@ -89,7 +89,7 @@
     <img src=@item.URL>
     <p class="nome-produto">@item.Nome</p>
     <h4 class="preco">R$ @item.Preco</h4>
-    @Html.ActionLink("COMPRAR", "", "", new { @class = "btn btn-danger btn-comprar" })
+    @Html.ActionLink("COMPRAR", "Comprar", "Carrinho", new { @id = item.ProdutoId } , new { @class = "btn btn-danger btn-comprar" })
 </div>
     }
 </div>
