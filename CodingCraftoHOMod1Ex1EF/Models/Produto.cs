@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodingCraftoHOMod1Ex1EF.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,8 +28,14 @@ namespace CodingCraftoHOMod1Ex1EF.Models
 
         public int Quantidade { get; set; }
 
+        public string URLFoto { get; set; }
+
         [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
+
+        [NotMapped]
+        public ETipoFotoProduto TipoFoto { get; set; }
+        
 
         public virtual Categoria Categoria { get; set; }
 

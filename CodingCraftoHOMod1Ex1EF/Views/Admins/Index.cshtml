@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Vamos ver</div>
+            <div class="sidebar-brand-text mx-3">Candy Shop</div>
         </a>
 
         <!-- Divider -->
@@ -17,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Admin Dashboard</span>
             </a>
@@ -55,8 +55,8 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Opções</h6>
-                    <a class="collapse-item" href="utilities-color.html">Add Produto</a>
-                    <a class="collapse-item" href="utilities-border.html">Listar produtos</a>
+                    @Html.ActionLink("Add produto", "Create", "Produtos", null, new { @class = "collapse-item" })
+                    @Html.ActionLink("Listar produto", "Index", "Produtos", null, new { @class = "collapse-item" })
                 </div>
             </div>
         </li>
@@ -72,8 +72,8 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Opções</h6>
-                    <a class="collapse-item" href="utilities-color.html">Add Categoria</a>
-                    <a class="collapse-item" href="utilities-border.html">Listar categorias</a>
+                    @Html.ActionLink("Add categoria", "Create", "Categorias", null, new { @class = "collapse-item" })
+                    @Html.ActionLink("Listar categoria", "Index", "Categorias", null, new { @class = "collapse-item" })
                 </div>
             </div>
         </li>
@@ -88,25 +88,14 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Opções</h6>
-                    <a class="collapse-item" href="utilities-color.html">Add Fornecedor</a>
-                    <a class="collapse-item" href="utilities-border.html">Listar fornecedores</a>
+                    @Html.ActionLink("Add fornecedor", "Create", "Fornecedores", null, new { @class = "collapse-item" })
+                    @Html.ActionLink("Listar fornecedores", "Index", "Fornecedores", null, new { @class = "collapse-item" })
                 </div>
             </div>
         </li>
 
         <hr class="sidebar-divider">
         <!-- Heading -->
-        
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span>
-            </a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -121,7 +110,7 @@
         <!-- Main Content -->
         <div id="content">
 
-           
+
             <!-- End of Topbar -->
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -290,15 +279,7 @@
 
         </div>
         <!-- End of Main Content -->
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Nezoo 2020</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+
 
     </div>
     <!-- End of Content Wrapper -->
@@ -306,9 +287,15 @@
 </div>
 <!-- End of Page Wrapper -->
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Nezoo 2020</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/datatables-demo")

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Transactions;
+using CodingCraftoHOMod1Ex1EF.Models.Enums;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
@@ -61,6 +62,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         public async Task<ActionResult> Create([Bind(Include = "ProdutoId,CategoriaId,Nome,Preco,Cardinalidade")] Produto produto)
         {
             produto.Quantidade = 0;
+            produto.URLFoto = $"~/Content/img/{Enum.GetName(typeof(ETipoFotoProduto), produto.TipoFoto)}.jpg";
 
             if (ModelState.IsValid)
             {
