@@ -19,5 +19,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public decimal Preco { get; set; }
 
         public int Cardinalidade { get; set; }
+
+        public string URL { get; set; }
     }
 }

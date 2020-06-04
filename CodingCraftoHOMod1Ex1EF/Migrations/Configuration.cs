@@ -46,12 +46,11 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
             context.SaveChanges();
 
             context.Produtos.AddOrUpdate(p => p.Nome,
-                new Produto { Nome = "KitKat", CategoriaId = 1, Preco = 0, Cardinalidade = 3, Quantidade = 0 },
-                new Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 0, Cardinalidade = 3, Quantidade = 0 },
-                new Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 0, Cardinalidade = 4, Quantidade = 0 },
-                new Produto { Nome = "Jujubas", CategoriaId = 4, Preco = 0, Cardinalidade = 4, Quantidade = 0 },
-                new Produto { Nome = "Bolo de chocolate", CategoriaId = 0, Preco = 5, Cardinalidade = 4, Quantidade = 0 },
-                new Produto { Nome = "Maça do Amor", CategoriaId = 6, Preco = 0, Cardinalidade = 4, Quantidade = 0 }
+                new Produto { Nome = "KitKat", CategoriaId = 1, Preco = 3.5m, Cardinalidade = 3, Quantidade = 0, URLFoto = "~/Content/img/chocolates.jpg}" },
+                new Produto { Nome = "Guaracamp", CategoriaId = 2, Preco = 5, Cardinalidade = 3, Quantidade = 0, URLFoto = "~/Content/img/guarana.jpg}" },
+                new Produto { Nome = "Gulosos", CategoriaId = 3, Preco = 6, Cardinalidade = 4, Quantidade = 0, URLFoto = "~/Content/img/biscoitos.jpg}" },
+                new Produto { Nome = "Jujubas", CategoriaId = 4, Preco = 8, Cardinalidade = 4, Quantidade = 0, URLFoto = "~/Content/img/jujubas.jpg}" },
+                new Produto { Nome = "Bolo de chocolate", CategoriaId = 5, Preco = 5, Cardinalidade = 1, Quantidade = 0, URLFoto = "~/Content/img/bolos.jpg}" }
                 );
 
             context.SaveChanges();
