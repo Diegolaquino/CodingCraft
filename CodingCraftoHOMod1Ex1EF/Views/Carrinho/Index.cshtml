@@ -59,38 +59,14 @@
     </div>
 </div>
 <div class="index-produtos container-md">
-    <div class="item-produto">
-        <img src="~/Content/img/biscoitos.jpg">
-        <p class="nome-produto">Biscoito Trakinas</p>
-        <h4 class="preco">R$ 3.000,00</h4>
-        <span class="btn btn-danger btn-comprar">comprar</span>
-    </div>
-    <div class="item-produto">
-        <img src="~/Content/img/jujubas.jpg">
-        <p class="nome-produto">Jujubas</p>
-        <h4 class="preco">R$ 3.000,00</h4>
-        <span class="btn btn-danger btn-comprar">comprar</span>
-    </div>
-    <div class="item-produto">
-        <img src="~/Content/img/bombons.jpg">
-        <p class="nome-produto">Bombons</p>
-        <h4 class="preco">R$ 3.000,00</h4>
-        <span class="btn btn-danger btn-comprar">comprar</span>
-    </div>
-    <div class="item-produto">
-        <img src="~/Content/img/coca.jpg">
-        <p class="nome-produto">Coca Cola</p>
-        <h4 class="preco">R$ 3.000,00</h4>
-        <span class="btn btn-danger btn-comprar">comprar</span>
-    </div>
     @foreach (var item in Model)
     {
-<div class="item-produto">
-    <img src=@item.URL>
-    <p class="nome-produto">@item.Nome</p>
-    <h4 class="preco">R$ @item.Preco</h4>
-    @Html.ActionLink("COMPRAR", "Comprar", "Carrinho", new { @id = item.ProdutoId } , new { @class = "btn btn-danger btn-comprar" })
-</div>
+        <div class="item-produto">
+            <img src=@item.URL>
+            <p class="nome-produto">@item.Nome</p>
+            <h4 class="preco">R$ @item.Preco</h4>
+            @Html.ActionLink("COMPRAR", "Comprar", "Carrinho", new { @id = item.ProdutoId } , new { @class = "btn btn-danger btn-comprar" })
+        </div>
     }
 </div>
 
