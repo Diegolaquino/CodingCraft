@@ -59,14 +59,21 @@
     </div>
 </div>
 <div class="index-produtos container-md">
-    @foreach (var item in Model)
+    @if (!Model.Any())
     {
-        <div class="item-produto">
-            <img src=@item.URL>
-            <p class="nome-produto">@item.Nome</p>
-            <h4 class="preco">R$ @item.Preco</h4>
-            @Html.ActionLink("COMPRAR", "Comprar", "Carrinho", new { @id = item.ProdutoId } , new { @class = "btn btn-danger btn-comprar" })
-        </div>
+        <div class="jumbotron"><h2 class="text-center">Não há produtos no momento</h2></div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="item-produto">
+                <img src=@item.URL>
+                <p class="nome-produto">@item.Nome</p>
+                <h4 class="preco">R$ @item.Preco</h4>
+                @Html.ActionLink("COMPRAR", "Comprar", "Carrinho", new { @id = item.ProdutoId }, new { @class = "btn btn-danger btn-comprar" })
+            </div>
+        }
     }
 </div>
 

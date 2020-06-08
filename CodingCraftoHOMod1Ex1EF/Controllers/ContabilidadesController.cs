@@ -7,8 +7,10 @@ using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
+    [Authorize]
     public class ContabilidadesController : Controller
     {
+        
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Contabilidades

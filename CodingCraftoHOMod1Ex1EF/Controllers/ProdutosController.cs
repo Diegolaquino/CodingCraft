@@ -11,6 +11,7 @@ using CodingCraftoHOMod1Ex1EF.Models.Enums;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

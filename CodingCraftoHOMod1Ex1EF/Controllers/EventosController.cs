@@ -14,6 +14,7 @@ using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
+    [Authorize]
     public class EventosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

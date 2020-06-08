@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AdminsController : Controller
     {
         private ApplicationSignInManager _signInManager;
