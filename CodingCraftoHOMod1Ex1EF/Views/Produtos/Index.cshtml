@@ -12,7 +12,8 @@
 }
 <div class="card shadow mb-4" style="margin-top: 50px">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold">Produtos no Estoque</h6>
+      
+        <h6 class="m-0 font-weight-bold">Produtos no Estoque @Html.ActionLink("+", "Create", "Produtos", null, new { @class = "btn btn-success btn-sm", style = "float: right;" })</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -51,6 +52,7 @@
                             <td>@item.Quantidade</td>
                             <td>
                                 @Html.ActionLink("Remover", "Delete", new { id = item.ProdutoId }, new { @class = "btn btn-danger btn-sm" })
+                                @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }, new { @class = "btn btn-warning btn-sm" })
                             </td>
                         </tr>
                     }
