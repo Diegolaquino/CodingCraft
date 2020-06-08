@@ -14,7 +14,7 @@ using CodingCraftoHOMod1Ex1EF.Helper;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class VendasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

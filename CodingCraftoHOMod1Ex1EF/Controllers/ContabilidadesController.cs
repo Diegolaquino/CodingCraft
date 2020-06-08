@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ContabilidadesController : Controller
     {
         

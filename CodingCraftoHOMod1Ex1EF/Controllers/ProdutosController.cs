@@ -11,7 +11,7 @@ using CodingCraftoHOMod1Ex1EF.Models.Enums;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ProdutosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

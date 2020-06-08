@@ -7,7 +7,7 @@ using System.Transactions;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class FornecedoresController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

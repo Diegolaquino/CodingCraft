@@ -13,7 +13,7 @@ using System.Web.Helpers;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ComprasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

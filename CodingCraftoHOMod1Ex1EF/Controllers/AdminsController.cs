@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminsController : Controller
     {
         private ApplicationSignInManager _signInManager;

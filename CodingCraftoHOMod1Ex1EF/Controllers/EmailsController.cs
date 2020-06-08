@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace CodingCraftoHOMod1Ex1EF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class EmailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
