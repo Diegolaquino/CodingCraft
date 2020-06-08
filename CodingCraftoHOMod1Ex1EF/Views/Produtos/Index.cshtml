@@ -4,78 +4,60 @@
 
 
 @section css {
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 }
 
 @{
     ViewBag.Title = "Produtos";
 }
-
-<h2 class="tituloPagina">
-    Nossos Produtos
-</h2>
-<p>
-    <i class="fas fa-plus"></i>
-    @Html.ActionLink("Cadastrar Produto", "Create")
-</p>
-
-<div>  @Html.ActionLink("Carrinho", "Carrinho") </div>
-
-<table class="table" id="tabelaProdutos">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cardinalidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Preco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cardinalidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantidade)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card shadow mb-4" style="margin-top: 50px">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold">Produtos no Estoque</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Categoria</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Cardinalidade</th>
+                        <th>Quantidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Categoria</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Cardinalidade</th>
+                        <th>Quantidade</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ProdutoId</td>
+                            <td>@item.Categoria.Nome</td>
+                            <td>@item.Nome</td>
+                            <td>R$ @item.Preco</td>
+                            <td>@item.Cardinalidade</td>
+                            <td>@item.Quantidade</td>
+                            <td>
+                                @Html.ActionLink("Remover", "Delete", new { id = item.ProdutoId }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 @Scripts.Render("~/bundles/jqueryMin")
-@Scripts.Render("~/bundles/datatablesMin")
-@Scripts.Render("~/bundles/datatablesCss")
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#tabelaProdutos').DataTable();
-    });
-</script>
