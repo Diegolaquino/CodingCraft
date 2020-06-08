@@ -7,7 +7,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models.Enums
 {
     public enum EAppUserRoles
     {
-        Administrators = 1,
-        Users = 2
+        Admin = 1,
+        User = 2
     }
 }

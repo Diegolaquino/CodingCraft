@@ -87,7 +87,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if(user.Roles.FirstOrDefault().RoleId == (int)EAppUserRoles.Administrators)
+                    if(user.Roles.FirstOrDefault().RoleId == (int)EAppUserRoles.Admin)
                         return RedirectToAction("Index", "Admins");
                     else
                         return RedirectToLocal(returnUrl);
