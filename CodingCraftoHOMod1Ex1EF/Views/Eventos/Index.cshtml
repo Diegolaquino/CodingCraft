@@ -1,57 +1,105 @@
 ﻿@model IEnumerable<CodingCraftoHOMod1Ex1EF.Models.Evento>
 
-<p>
-    @Html.ActionLink("Cadastrar Lembrete", "Create")
-</p>
-<table class="table" id="tabelaEventos">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataDeCadastro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataDeAviso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aviso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventoCompletado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+<div class="card shadow mb-4" style="margin-top: 50px">
+    <div class="card-header py-3">
+
+        <h6 class="m-0 font-weight-bold">Produtos no Estoque @Html.ActionLink("+", "Create", "Eventos", null, new { @class = "btn btn-success btn-sm", style = "float: right;" })</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Tipo do Evento</th>
+                        <th>Aviso</th>
+                        <th>Data do Aviso</th>
+                        <th>Data de Cadastro</th>
+                        <th>Avisado</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Tipo do Evento</th>
+                        <th>Aviso</th>
+                        <th>Data do Aviso</th>
+                        <th>Data de Cadastro</th>
+                        <th>Avisado</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.EventoId</td>
+                            <td>@item.TipoDeEvento</td>
+                            <td>@item.Aviso</td>
+                            <td>@item.DataDeAviso</td>
+                            <td>@item.DataDeCadastro</td>
+                            <td>@item.EventoCompletado</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@*<p>
+        @Html.ActionLink("Cadastrar Lembrete", "Create")
+    </p>
+    <table class="table" id="tabelaEventos">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataDeCadastro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataDeAviso)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aviso)
-                </td>
-                <td>
-                    @if (item.EventoCompletado == false)
-                    {
-                        <span>Não</span>
-                    }
-                    else
-                    {
-                        <span>Sim</span>
-                    }
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EventoId })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataDeCadastro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataDeAviso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aviso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventoCompletado)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataDeCadastro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataDeAviso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aviso)
+                    </td>
+                    <td>
+                        @if (item.EventoCompletado == false)
+                        {
+                            <span>Não</span>
+                        }
+                        else
+                        {
+                            <span>Sim</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EventoId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
 
 @Scripts.Render("~/bundles/jqueryMin")
 @Scripts.Render("~/bundles/datatablesMin")
