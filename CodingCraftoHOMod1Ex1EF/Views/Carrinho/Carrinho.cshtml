@@ -42,7 +42,7 @@
             </li>
 
             <li class="list-group-item d-flex justify-content-between">
-                <span class="text-muted"><button class="btn btn-success btn-sm btn-block ml-1">@Html.ActionLink("Finalizar Pedido", "EmailCliente", "Vendas", new { @class = "button-remove-style" })</button></span>
+                <span class="text-muted"><button class="btn btn-success btn-sm btn-block ml-1">@Html.ActionLink("Finalizar Pedido", "EmailCliente", "Vendas", null, new { @class = "button-remove-style" })</button></span>
                 <span class="text-muted"><button class="btn btn-danger btn-sm btn-block ml-2">@Html.ActionLink("Cancelar Pedido", "CancelarPedido", null, new { @class = "button-remove-style" })</button></span>
             </li>
         }
