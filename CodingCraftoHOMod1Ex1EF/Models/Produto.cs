@@ -26,6 +26,7 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         [Required]
         public int Cardinalidade { get; set; }
 
+        [Range(1, 100)]
         public int Quantidade { get; set; }
 
         public string URLFoto { get; set; }

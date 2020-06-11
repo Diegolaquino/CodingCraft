@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Cadastrar Produto";
+    Html.EnableClientValidation(true);
 }
 
 @using (Html.BeginForm()) 
@@ -62,6 +63,7 @@
 <div>
     @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-secondary"})
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

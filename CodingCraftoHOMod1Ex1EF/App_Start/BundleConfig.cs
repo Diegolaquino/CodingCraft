@@ -30,7 +30,10 @@ namespace CodingCraftoHOMod1Ex1EF
                         "~/Scripts/jquery-3.3.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryMin").Include(
-                        "~/Scripts/jquery-3.3.1.min.js"));
+                        "~/Scripts/jquery-3.3.1.min.js")
+                .Include("~/Scripts/jquery.validate.min.js")
+                .Include("~/Scripts/jquery.validate.unobtrusive.min.js")
+                ) ;
 
             bundles.Add(new ScriptBundle("~/bundles/datatablesMin").Include(
                        "~/Scripts/DataTables/jquery.dataTables.min.js"));
