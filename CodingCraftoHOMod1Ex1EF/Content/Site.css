@@ -43,3 +43,20 @@ textarea {
     font-family: 'Chilanka', cursive;
 }
 
+.pedido-finalizado {
+    margin-top: 50px; 
+    background-image: url("img/complete.jpg");
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    padding-top: 25px;
+    border-radius: 5px;
+}
+
+.pedido-finalizado h2{
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}

@@ -106,6 +106,15 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         }
         #endregion
 
+
+        #region Finaliza Pedido
+        [Authorize]
+        public ActionResult FinalizarPedido()
+        {
+            return View();
+        }
+
+        #endregion
         #region Método de Cancelamento do pedido
         [HttpGet]
         public ActionResult CancelarPedido()

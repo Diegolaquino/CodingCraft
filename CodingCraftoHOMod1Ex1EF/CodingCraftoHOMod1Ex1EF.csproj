@@ -446,6 +446,7 @@
     <Content Include="Content\img\chicletes.jpg" />
     <Content Include="Content\img\chocolates.jpg" />
     <Content Include="Content\img\coca.jpg" />
+    <Content Include="Content\img\complete.jpg" />
     <Content Include="Content\img\cupcake.jpg" />
     <Content Include="Content\img\dell.jpg" />
     <Content Include="Content\img\dell2.jpg" />
@@ -667,6 +668,7 @@
     <Content Include="Views\Emails\EmailCobranca.cshtml" />
     <Content Include="Views\Admins\Index.cshtml" />
     <Content Include="Views\Admins\Usuarios.cshtml" />
+    <Content Include="Views\Carrinho\FinalizarPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
