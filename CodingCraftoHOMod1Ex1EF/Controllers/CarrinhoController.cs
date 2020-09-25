@@ -49,6 +49,14 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             return Json(listaNome, JsonRequestBehavior.AllowGet);
         }
 
+        #region Meus Pedidos
+        public ActionResult MeusPedidos()
+        {
+            var pedidos = db.Vendas.Where(x => x.User == User);
+            return View(pedidos);
+        }
+        #endregion
+
         #region Método Comprar
         public async Task<ActionResult> Comprar(int id)
         {
@@ -111,10 +119,12 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [Authorize]
         public ActionResult FinalizarPedido()
         {
+
             return View();
         }
 
         #endregion
+
         #region Método de Cancelamento do pedido
         [HttpGet]
         public ActionResult CancelarPedido()

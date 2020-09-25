@@ -16,6 +16,11 @@ namespace CodingCraftoHOMod1Ex1EF.Models
             return new ApplicationDbContext();
         }
 
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
