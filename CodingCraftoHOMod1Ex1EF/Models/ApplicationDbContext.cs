@@ -29,7 +29,6 @@ namespace CodingCraftoHOMod1Ex1EF.Models
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<Item> Itens { get; set; }
         public DbSet<Evento> Eventos { get; set; }
-
-        //public DbSet<Contabilidade> Contabilidades { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
     }
 }

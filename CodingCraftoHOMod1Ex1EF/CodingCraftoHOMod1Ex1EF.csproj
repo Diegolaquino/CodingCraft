@@ -237,13 +237,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\EmailHelper.cs" />
-    <Compile Include="Migrations\202006011718230_Mudaca_nom-identiy.cs" />
-    <Compile Include="Migrations\202006011718230_Mudaca_nom-identiy.Designer.cs">
-      <DependentUpon>202006011718230_Mudaca_nom-identiy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006040130014_mudanca_produto.cs" />
-    <Compile Include="Migrations\202006040130014_mudanca_produto.Designer.cs">
-      <DependentUpon>202006040130014_mudanca_produto.cs</DependentUpon>
+    <Compile Include="Migrations\202010012325532_Init1.cs" />
+    <Compile Include="Migrations\202010012325532_Init1.Designer.cs">
+      <DependentUpon>202010012325532_Init1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -261,7 +257,9 @@
     <Compile Include="Models\FornecedorProduto.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemPedido.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />
     <Compile Include="Models\Venda.cs" />
@@ -686,11 +684,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006011718230_Mudaca_nom-identiy.resx">
-      <DependentUpon>202006011718230_Mudaca_nom-identiy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006040130014_mudanca_produto.resx">
-      <DependentUpon>202006040130014_mudanca_produto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010012325532_Init1.resx">
+      <DependentUpon>202010012325532_Init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

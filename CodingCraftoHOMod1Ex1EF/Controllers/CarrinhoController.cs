@@ -44,7 +44,7 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
         [HttpGet]
         public JsonResult Teste()
         {
-            var listaNome = new List<String>() {"Diego", "Lima", "Aquino"};
+            var listaNome = new List<String>() { "Diego", "Lima", "Aquino" };
 
             return Json(listaNome, JsonRequestBehavior.AllowGet);
         }
@@ -159,5 +159,10 @@ namespace CodingCraftoHOMod1Ex1EF.Controllers
             }
         }
         #endregion
+
+        public ActionResult Pedidos()
+        {
+            return View();
+        }
     }
 }
