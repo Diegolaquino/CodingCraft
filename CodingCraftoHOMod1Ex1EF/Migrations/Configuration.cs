@@ -10,6 +10,7 @@ namespace CodingCraftoHOMod1Ex1EF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(CodingCraftoHOMod1Ex1EF.Models.ApplicationDbContext context)
