@@ -19,4 +19,10 @@ namespace CodingCraftoHOMod1Ex1EF.Models
             return userIdentity;
         }
     }
+
+    public enum Roles
+    {
+        Admin,
+        User
+    }
 }
